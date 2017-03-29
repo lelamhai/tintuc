@@ -65,3 +65,30 @@ return count( $comments_by_type['comment'] );
 return $count;
 }
 }
+
+/*
+*method:  getPostViews: get count views, setPostViews: set acount views
+*use get/set views post
+*/
+function getPostViews($postID){ // hàm này dùng để lấy số người đã xem qua bài viết
+    $count_key = 'post_views_count';
+    $count = get_post_meta($postID, $count_key, true);
+    if($count==''){ // Nếu như lượt xem không có
+        delete_post_meta($postID, $count_key);
+        add_post_meta($postID, $count_key, '0');
+        return "0"; // giá trị trả về bằng 0
+    }
+    return $count; // Trả về giá trị lượt xem
+}
+function setPostViews($postID) {// hàm này dùng để set và update số lượt người xem bài viết.
+    $count_key = 'post_views_count';
+    $count = get_post_meta($postID, $count_key, true);
+    if($count==''){
+        $count = 0;
+        delete_post_meta($postID, $count_key);
+        add_post_meta($postID, $count_key, '0');
+    }else{
+        $count++; // cộng đồn view
+        update_post_meta($postID, $count_key, $count); // update count
+    }
+}

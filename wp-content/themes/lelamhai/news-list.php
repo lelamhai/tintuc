@@ -76,28 +76,28 @@
         <div class="link-more text-right"><a href="" class="link">See more</a></div>
     </div>
   </div>
-  <div class="container">
-    <div class="other-projects">
-      <h3 class="title-block">OTHER CATEGORIES</h3>
-      <div class="list-project">
+    <div class="container">
+      <div class="other-projects">
+        <h3 class="title-block">OTHER CATEGORIES</h3>
+        <div class="list-project">
         <div class="flexslider slider-other">
           <ul class="slides">
-            <li><a href=""><img src="<?php echo get_bloginfo("template_directory"); ?>/img/data-example/other-pro1.png">
+            <li><a href=""><img src="<?php echo get_bloginfo("template_directory"); ?>/asset/img/data-example/other-pro1.png">
               <h4 class="caption">CATEGORY 1</h4></a></li>
-              <li><a href=""><img src="<?php echo get_bloginfo("template_directory"); ?>/img/data-example/other-pro2.png">
+              <li><a href=""><img src="<?php echo get_bloginfo("template_directory"); ?>/asset/img/data-example/other-pro2.png">
                 <h4 class="caption">CATEGORY 2</h4></a></li>
-                <li><a href=""><img src="<?php echo get_bloginfo("template_directory"); ?>/img/data-example/other-pro3.png">
+                <li><a href=""><img src="<?php echo get_bloginfo("template_directory"); ?>/asset/img/data-example/other-pro3.png">
                   <h4 class="caption">CATEGORY 3</h4></a></li>
-                  <li><a href=""><img src="<?php echo get_bloginfo("template_directory"); ?>/img/data-example/other-pro1.png">
+                  <li><a href=""><img src="<?php echo get_bloginfo("template_directory"); ?>/asset/img/data-example/other-pro1.png">
                     <h4 class="caption">CATEGORY 4</h4></a></li>
-                    <li><a href=""><img src="<?php echo get_bloginfo("template_directory"); ?>/img/data-example/other-pro2.png">
+                    <li><a href=""><img src="<?php echo get_bloginfo("template_directory"); ?>/asset/img/data-example/other-pro2.png">
                       <h4 class="caption">CATEGORY 5 </h4></a></li>
-                      <li><a href=""><img src="<?php echo get_bloginfo("template_directory"); ?>/img/data-example/other-pro2.png">
+                      <li><a href=""><img src="<?php echo get_bloginfo("template_directory"); ?>/asset/img/data-example/other-pro2.png">
                         <h4 class="caption">CATEGORY 6 </h4></a></li>
                       </ul>
                     </div>
                   </div>
-                </div>
               </div>
             </div>
+          </div>
             <?php get_footer(); ?>

@@ -50,7 +50,10 @@
               while (have_posts()) :
                 the_post();
               ?>
-                <div class="title"><span class="text"><a href="<?php the_permalink(); ?>"><?php the_title();?></a></span></div>
+                <?php if(get_field( "news_hot", $post->ID ))
+                {?>
+                  <div class="title"><span class="text"><a href="<?php the_permalink(); ?>"><?php the_title();?></a></span></div>
+                <?php } ?>
               <?php 
               endwhile; endif;
               ?>
@@ -77,18 +80,25 @@
                 the_post();
               ?>
               <?php 
-              $image = wp_get_attachment_image_src( get_post_thumbnail_id( $post->ID ), 'full' ); 
+                $image = wp_get_attachment_image_src( get_post_thumbnail_id( $post->ID ), 'Large' ); 
               ?>
-              <div class="item">
-                <div class="thumbnail">
-                  <a href="<?php the_permalink(); ?>">
-                    <div style="background-image: url(<?php echo $image[0]; ?>)" class="img"></div>
-                  </a>
+              <?php if(get_field( "news_hot", $post->ID ))
+                {?>
+                 <!--  <div class="title"><span class="text"><a href="<?php the_permalink(); ?>"><?php the_title();?></a></span></div> -->
+               
+
+                 <div class="item">
+                  <div class="thumbnail">
+                    <a href="<?php the_permalink(); ?>">
+                      <div style="background-image: url(<?php echo $image[0]; ?>)" class="img"></div>
+                    </a>
+                  </div>
+                  <div class="caption">
+                    <div class="title"><?php the_title();?></div>
+                  </div>
                 </div>
-                <div class="caption">
-                  <div class="title"><?php the_title();?></div>
-                </div>
-              </div>
+                <?php } ?>
+              
               <?php 
               endwhile; endif;
               ?>
@@ -99,6 +109,12 @@
         </div>
       </div>
     </div>
+    <!-- test -->
+
+
+
+    <!-- end test -->
+
     <div class="row-section">
       <div class="container">
         <h2 class="title-block">POPULAR NEWS</h2>
@@ -118,8 +134,9 @@
                 the_post();
               ?>
               <?php 
-              $image = wp_get_attachment_image_src( get_post_thumbnail_id( $post->ID ), 'thumbnail' ); 
+              $image = wp_get_attachment_image_src( get_post_thumbnail_id( $post->ID ), 'Large' ); 
               ?>
+              <?php setPostViews(get_the_ID()); ?>
               <div class="item">
                 <div class="thumbnail">
                   <a href="<?php the_permalink(); ?>">
@@ -128,67 +145,17 @@
                 </div>
                 <div class="summary">
                   <h3 class="title"><a href="<?php the_permalink(); ?>"><?php the_title();?></a></h3>
-                  <div class="entry"><a href="<?php the_permalink(); ?>"><?php the_content();?></a></div>
+                  <div class="entry news-hot-description"><a href="<?php the_permalink(); ?>"><?php echo get_field( "description", $post->ID );?></a></div>
                 </div>
               </div>
+              <div>luot xem: <?php echo getPostViews(get_the_ID()); ?></div>
               <?php 
               endwhile; endif;
               ?>
               <?php
               wp_reset_query();
               ?>
-
-            <div class="item">
-              <div class="thumbnail">
-                <div style="background-image: url(<?php echo get_bloginfo("template_directory"); ?>/img/data-example/best-view1.png)" class="img"></div>
-              </div>
-              <div class="summary">
-                <h3 class="title">The most expensive housing market is...</h3>
-                <div class="entry">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam sollicitudin arcu lacus. Curabitur eget est mollis, pharetra lectus hendrerit, pretium mauris. Duis lacinia tortor a urna accumsan, eget egestas felis fermentum.</div>
-              </div>
-            </div>
-            <div class="item">
-              <div class="thumbnail">
-                <div style="background-image: url(<?php echo get_bloginfo("template_directory"); ?>/img/data-example/best-view2.png)" class="img"></div>
-              </div>
-              <div class="summary">
-                <h3 class="title">Real estate today: Older buyers, more bathrooms</h3>
-                <div class="entry">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam sollicitudin arcu lacus. Curabitur eget est mollis, pharetra lectus hendrerit, pretium mauris...</div>
-              </div>
-            </div>
-            <div class="item">
-              <div class="thumbnail">
-                <div style="background-image: url(<?php echo get_bloginfo("template_directory"); ?>/img/data-example/best-view3.png)" class="img"></div>
-              </div>
-              <div class="summary">
-                <h3 class="title">Buy (or sell) your home ... without a real estate agent</h3>
-                <div class="entry">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam sollicitudin arcu lacus. Curabitur eget est mollis, pharetra lectus hendrerit, pretium mauris...</div>
-              </div>
-            </div>
-            <div class="item">
-              <div class="thumbnail">
-                <div style="background-image: url(<?php echo get_bloginfo("template_directory"); ?>/img/data-example/best-view4.png)" class="img"></div>
-              </div>
-              <div class="summary">
-                <h3 class="title">Cities with biggest rent hikes</h3>
-                <div class="entry">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam sollicitudin arcu lacus. Curabitur eget est mollis, pharetra lectus hendrerit, pretium mauris...</div>
-              </div>
-            </div>
-            <div class="item">
-              <div class="thumbnail">
-                <div style="background-image: url(<?php echo get_bloginfo("template_directory"); ?>/img/data-example/best-view5.png)" class="img"></div>
-              </div>
-              <div class="summary">
-                <h3 class="title">Where Millennials are buying homes</h3>
-                <div class="entry">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam sollicitudin arcu lacus. Curabitur eget est mollis, pharetra lectus hendrerit, pretium mauris...</div>
-              </div>
-            </div>
-          </div>
-          
           <div class="link-more text-right"><a href="" class="link">See more</a></div>
-
-
-
         </div>
       </div>
     </div>
@@ -199,6 +166,8 @@
           <div class="row">
             <div class="entry-left col-xs-6">
               <div class="row">
+
+
                 <div class="col-xs-6">
                   <div class="wrap-content">
                     <div class="thumbnail">
@@ -220,7 +189,10 @@
               </div>
             </div>
             <div class="entry-right col-xs-6">
-              <div class="entry"><a class="title">How to buy a home without a 20% down payment</a><a class="title">See the investment tactics millionaires have been using for decades</a><a class="title">Top 10 things your smartphone will replace</a><a class="title">Google could be your next mortgage broker</a><a class="title">Buying a home: Buyer's guide</a></div>
+              <div class="entry">
+              <a class="title">How to buy a home without a 20% down payment</a>
+              <a class="title">See the investment tactics millionaires have been using for decades</a><a class="title">Top 10 things your smartphone will replace</a>
+              <a class="title">Google could be your next mortgage broker</a><a class="title">Buying a home: Buyer's guide</a></div>
             </div>
           </div>
           <div class="link-more text-right"><a href="" class="link">See more</a></div>
@@ -234,31 +206,45 @@
           <div class="row">
             <div class="entry-left col-xs-6">
               <div class="row">
-                <div class="col-xs-6">
-                  <div class="wrap-content">
-                    <div class="thumbnail">
-                      <div style="background-image: url(<?php echo get_bloginfo("template_directory"); ?>/img/data-example/under3.png)" class="img"></div>
+                <?php
+                $posts_per_page = 2;
+                $args = array(
+                  'category_name' => 'policy-news',                                         
+                  'posts_per_page' => $posts_per_page,
+                  'paged' => ( get_query_var('paged') ? get_query_var('paged') : 1)
+                  );
+                query_posts($args);
+
+                if(have_posts()) : 
+                  while (have_posts()) :
+                    the_post();
+                  ?>
+                  <?php 
+                  $image = wp_get_attachment_image_src( get_post_thumbnail_id( $post->ID ), 'Large' ); 
+                  ?>
+                  <div class="col-xs-6">
+                    <div class="wrap-content">
+                      <div class="thumbnail">
+                        <div style="background-image: url(<?php echo $image[0]; ?>)" class="img"></div>
+                      </div>
+                       <h3 class="title"><?php the_title();?></h3>
+                      <div class="policy-description">
+                        <a class ="policy-content" href=""><?php echo get_field( "policy_news", $post->ID );?></a>
+                      </div>
                     </div>
-                    <h3 class="title">Vietnam blocks sale of HCMC-sized ranch</h3>
-                    <div class="des">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam...</div>
                   </div>
-                </div>
-                <div class="col-xs-6">
-                  <div class="wrap-content">
-                    <div class="thumbnail">
-                      <div style="background-image: url(<?php echo get_bloginfo("template_directory"); ?>/img/data-example/under2.png)" class="img"></div>
-                    </div>
-                    <h3 class="title">Vietnam blocks sale of HCMC-sized ranch</h3>
-                    <div class="des">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam...</div>
-                  </div>
-                </div>
-              </div>
-            </div>
-            <div class="entry-right col-xs-6">
-              <div class="entry"><a class="title">How to buy a home without a 20% down payment</a><a class="title">See the investment tactics millionaires have been using for decades</a><a class="title">Top 10 things your smartphone will replace</a><a class="title">Google could be your next mortgage broker</a><a class="title">Buying a home: Buyer's guide</a></div>
+                  <?php 
+                  endwhile; endif;
+                  ?>
+                  <?php
+                  wp_reset_query();
+                  ?>
             </div>
           </div>
-          <div class="link-more text-right"><a href="" class="link">See more</a></div>
+          <div class="entry-right col-xs-6">
+              <div class="entry"><a class="title">How to buy a home without a 20% down payment</a><a class="title">See the investment tactics millionaires have been using for decades</a><a class="title">Top 10 things your smartphone will replace</a><a class="title">Google could be your next mortgage broker</a><a class="title">Buying a home: Buyer's guide</a></div>
+            </div>
+             <div class="link-more text-right"><a href="" class="link">See more</a></div>
         </div>
       </div>
     </div>

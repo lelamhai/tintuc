@@ -6,7 +6,7 @@
 <?php get_header(); ?>
 
       <div class="container">
-        <div class="logo pull-left"><a><img src="<?php echo get_bloginfo("template_directory"); ?>/img/logo.png" alt=""></a></div>
+        <div class="logo pull-left"><a><img src="<?php echo get_bloginfo("template_directory"); ?>/asset/img/logo.png" alt=""></a></div>
         <div class="main-menu pull-right">
           <div class="wrap-menu">
             <ul class="menu">
@@ -210,7 +210,7 @@
           <div class="news-detail">
             <h1 class="title"><?php the_title();?></h1>
             <div class="author">Author: <b>Pham Phuong Thao</b></div>
-            <div class="date"><i><?php echo get_the_time(); ?></i></div>
+            <div class="date"><i><?php echo get_the_date('d-m-Y'); ?></i></div>
             <div class="wysiwyg">
               <?php the_content();?>
             </div>

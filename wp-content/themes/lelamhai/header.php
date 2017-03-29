@@ -4,13 +4,13 @@
 <meta charset="<?php bloginfo( 'charset' ); ?>" />
 <meta name="viewport" content="width=device-width" />
 <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:400,100,300,500,700,900">
-<link rel="stylesheet" href="<?php echo get_bloginfo("template_directory"); ?>/css/style.css">
-<script type="text/javascript" src="<?php echo get_bloginfo("template_directory"); ?>/js/jquery.js"></script>
-<script type="text/javascript" src="<?php echo get_bloginfo("template_directory"); ?>/js/bootstrap.js"></script>
-<script type="text/javascript" src="<?php echo get_bloginfo("template_directory"); ?>/js/jquery.mCustomScrollbar.concat.min.js"></script>
-<script type="text/javascript" src="<?php echo get_bloginfo("template_directory"); ?>/js/jquery.flexslider-min.js"></script>
-<script type="text/javascript" src="<?php echo get_bloginfo("template_directory"); ?>/js/project.js"></script>
-<script type="text/javascript" src="<?php echo get_bloginfo("template_directory"); ?>/js/global.js"></script>
+  <link rel="stylesheet" href="<?php echo get_bloginfo("template_directory"); ?>/asset/css/style.css">
+  <link rel="stylesheet" href="<?php echo get_bloginfo("template_directory"); ?>/asset/css/custome.css">
+  <script type="text/javascript" src="<?php echo get_bloginfo("template_directory"); ?>/asset/js/jquery.js"></script>
+  <script type="text/javascript" src="<?php echo get_bloginfo("template_directory"); ?>/asset/js/bootstrap.js"></script>  
+  <script type="text/javascript" src="<?php echo get_bloginfo("template_directory"); ?>/asset/js/jquery.mCustomScrollbar.concat.min.js"></script>
+  <script type="text/javascript" src="<?php echo get_bloginfo("template_directory"); ?>/asset/js/news.js"></script>
+  <script type="text/javascript" src="<?php echo get_bloginfo("template_directory"); ?>/asset/js/global.js"></script>
 <?php wp_head(); ?>
 </head>
 <body>
