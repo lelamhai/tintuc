@@ -1,9 +1,10 @@
 <?php
  /*
-  Template Name: news-list
+  Template Name: real-estate-market-list
  */
 ?>
 <?php get_header(); ?>
+
 <div class="container">
   <div class="logo pull-left"><a><img src="<?php echo get_bloginfo("template_directory"); ?>/asset/img/logo.png" alt=""></a></div>
   <div class="main-menu pull-right">
@@ -34,13 +35,13 @@
 
 <div class="row-section">
   <div class="container">
-    <h2 class="title-block">POPULAR NEWS</h2>
+    <h2 class="title-block">REAL ESTATE MARKET</h2>
     <div class="list-style4">
       <div class="entry">
        <?php
        $posts_per_page = 6;
        $args = array(
-        'category_name' => 'news',                                         
+        'category_name' => 'real-estate-market',                                         
         'posts_per_page' => $posts_per_page,
         'paged' => ( get_query_var('paged') ? get_query_var('paged') : 1)
         );
@@ -51,7 +52,7 @@
           the_post();
         ?>
         <?php 
-         $image = wp_get_attachment_image_src( get_post_thumbnail_id( $post->ID ), 'thumbnail' ); 
+         $image = wp_get_attachment_image_src( get_post_thumbnail_id( $post->ID ), 'Large' ); 
         ?>
         <div class="item">
           <div class="thumbnail">
@@ -62,7 +63,7 @@
          
           <div class="summary">
             <h3 class="title"><a href="<?php the_permalink(); ?>"><?php the_title();?></a></h3>
-            <div class="entry news-item"><a href="<?php the_permalink(); ?>"><?php echo get_field( "description", $post->ID );?></a></div>
+            <div class="entry news-item"><a href="<?php the_permalink(); ?>"><?php echo get_field( "real_estate_market", $post->ID );?></a></div>
           </div>
         </div>
           <?php 

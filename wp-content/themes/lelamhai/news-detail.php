@@ -4,7 +4,11 @@
  */
 ?>
 <?php get_header(); ?>
-
+      <?php setPostViews(get_the_ID()); ?>
+      <?php 
+        $categories = get_the_category();
+        wp_list_pluck( $categories, 'name' );
+      ?>
       <div class="container">
         <div class="logo pull-left"><a><img src="<?php echo get_bloginfo("template_directory"); ?>/asset/img/logo.png" alt=""></a></div>
         <div class="main-menu pull-right">
@@ -201,7 +205,36 @@
       </div>
     </div>
           <div class="breadcrumbs">
-            <div class="container"><a href="">News</a><span class="symbol">></span><a href="">Lastest</a><span class="symbol">></span><a href="" class="current"><?php the_title();?></a>
+            <div class="container">
+            <!-- <a href="">News</a>
+            <span class="symbol">></span>
+            <a href=""> -->
+            <?php 
+            foreach (wp_list_pluck( $categories, 'name' ) as $key => $value) {
+              //echo wp_list_pluck( $categories, 'name' )[0];
+              if(strcmp("news",wp_list_pluck( $categories, 'name' )[0]) == 0)
+              { ?>
+              <a href="">
+                <?php 
+                  echo wp_list_pluck( $categories, 'name' )[0];
+                ?>
+              </a>
+              <?php
+              } else {
+                ?>
+                <a href="">News</a>
+                <span class="symbol">></span>
+                <a href="">
+                  <?php 
+                    echo wp_list_pluck( $categories, 'name' )[0];
+                  ?>
+                </a>
+                <?php
+              }
+            }
+            ?>
+              <!-- </a> -->
+            <span class="symbol">></span><a href="" class="current"><?php the_title();?></a>
             </div>
           </div>
     <div class="container">

@@ -109,13 +109,9 @@
         </div>
       </div>
     </div>
-    <!-- test -->
+    
 
-
-
-    <!-- end test -->
-
-    <div class="row-section">
+    <div class="row-section clear-bottom">
       <div class="container">
         <h2 class="title-block">POPULAR NEWS</h2>
         <div class="list-style4">
@@ -136,7 +132,7 @@
               <?php 
               $image = wp_get_attachment_image_src( get_post_thumbnail_id( $post->ID ), 'Large' ); 
               ?>
-              <?php setPostViews(get_the_ID()); ?>
+              
               <div class="item">
                 <div class="thumbnail">
                   <a href="<?php the_permalink(); ?>">
@@ -148,7 +144,6 @@
                   <div class="entry news-hot-description"><a href="<?php the_permalink(); ?>"><?php echo get_field( "description", $post->ID );?></a></div>
                 </div>
               </div>
-              <div>luot xem: <?php echo getPostViews(get_the_ID()); ?></div>
               <?php 
               endwhile; endif;
               ?>
@@ -159,47 +154,97 @@
         </div>
       </div>
     </div>
-    <div class="row-section odd">
+    <div class="row-section odd clear-bottom">
       <div class="container">
         <h2 class="title-block">REAL ESTATE MARKET</h2>
         <div class="list-style4">
           <div class="row">
             <div class="entry-left col-xs-6">
               <div class="row">
+                <?php
+                $posts_per_page = 2;
+                $args = array(
+                  'category_name' => 'real-estate-market',                                         
+                  'posts_per_page' => $posts_per_page,
+                  'paged' => ( get_query_var('paged') ? get_query_var('paged') : 1)
+                  );
+                query_posts($args);
 
-
-                <div class="col-xs-6">
-                  <div class="wrap-content">
-                    <div class="thumbnail">
-                      <div style="background-image: url(<?php echo get_bloginfo("template_directory"); ?>/img/data-example/project-small2.png)" class="img"></div>
+                if(have_posts()) : 
+                  while (have_posts()) :
+                    the_post();
+                  ?>
+                  <?php 
+                  $image = wp_get_attachment_image_src( get_post_thumbnail_id( $post->ID ), 'Large' ); 
+                  ?>
+                  <div class="col-xs-6">
+                    <div class="wrap-content">
+                      <div class="thumbnail">
+                        <a href="">
+                          <div style="background-image: url(<?php echo $image[0]; ?>)" class="img"></div>
+                        </a>
+                      </div>
+                       <h3 class="title">
+                          <a href="<?php the_permalink(); ?>">
+                            <?php the_title();?>
+                          </a>
+                        </h3>
+                      <div class="policy-description">
+                        <a class ="policy-content" href="<?php the_permalink(); ?>"><?php echo get_field( "real_estate_market", $post->ID );?></a>
+                      </div>
                     </div>
-                    <h3 class="title">Vietnam blocks sale of HCMC-sized ranch</h3>
-                    <div class="des">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam...</div>
                   </div>
-                </div>
-                <div class="col-xs-6">
-                  <div class="wrap-content">
-                    <div class="thumbnail">
-                      <div style="background-image: url(<?php echo get_bloginfo("template_directory"); ?>/img/data-example/project-small4.png)" class="img"></div>
-                    </div>
-                    <h3 class="title">Vietnam blocks sale of HCMC-sized ranch</h3>
-                    <div class="des">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam...</div>
-                  </div>
-                </div>
-              </div>
-            </div>
-            <div class="entry-right col-xs-6">
-              <div class="entry">
-              <a class="title">How to buy a home without a 20% down payment</a>
-              <a class="title">See the investment tactics millionaires have been using for decades</a><a class="title">Top 10 things your smartphone will replace</a>
-              <a class="title">Google could be your next mortgage broker</a><a class="title">Buying a home: Buyer's guide</a></div>
+                  <?php 
+                  endwhile; endif;
+                  ?>
+                  <?php
+                  wp_reset_query();
+                  ?>
             </div>
           </div>
-          <div class="link-more text-right"><a href="" class="link">See more</a></div>
+          <div class="entry-right col-xs-6">
+              <div class="entry">
+
+                <?php
+                $flag = 0;
+                $posts_per_page = 7;
+                $args = array(
+                  'category_name' => 'real-estate-market',                                         
+                  'posts_per_page' => $posts_per_page,
+                  'paged' => ( get_query_var('paged') ? get_query_var('paged') : 1)
+                  );
+                query_posts($args);
+
+                if(have_posts()) : 
+                  while (have_posts()) :
+                    the_post();
+                  ?>
+                    <?php 
+                      if($flag > 1)
+                      {
+                      ?>
+                        <div class="title">
+                        <a href="<?php the_permalink(); ?>" class="policy-title">
+                          <?php the_title();?>
+                        </a>  
+                      </div>
+                      <?php
+                    }
+                    $flag ++;
+                    ?>
+                  <?php 
+                  endwhile; endif;
+                  ?>
+                  <?php
+                  wp_reset_query();
+                  ?>
+              </div>
+            </div>
+             <div class="link-more text-right"><a href="http://tintuc.local/real-estate-market-list" class="link">See more</a></div>
         </div>
       </div>
     </div>
-    <div class="row-section">
+    <div class="row-section new test">
       <div class="container">
         <h2 class="title-block">POLICY NEWS</h2>
         <div class="list-style4">
@@ -225,11 +270,17 @@
                   <div class="col-xs-6">
                     <div class="wrap-content">
                       <div class="thumbnail">
-                        <div style="background-image: url(<?php echo $image[0]; ?>)" class="img"></div>
+                        <a href="">
+                          <div style="background-image: url(<?php echo $image[0]; ?>)" class="img"></div>
+                        </a>
                       </div>
-                       <h3 class="title"><?php the_title();?></h3>
+                       <h3 class="title">
+                          <a href="<?php the_permalink(); ?>">
+                            <?php the_title();?>
+                          </a>
+                        </h3>
                       <div class="policy-description">
-                        <a class ="policy-content" href=""><?php echo get_field( "policy_news", $post->ID );?></a>
+                        <a class ="policy-content" href="<?php the_permalink(); ?>"><?php echo get_field( "policy_news", $post->ID );?></a>
                       </div>
                     </div>
                   </div>
@@ -242,10 +293,46 @@
             </div>
           </div>
           <div class="entry-right col-xs-6">
-              <div class="entry"><a class="title">How to buy a home without a 20% down payment</a><a class="title">See the investment tactics millionaires have been using for decades</a><a class="title">Top 10 things your smartphone will replace</a><a class="title">Google could be your next mortgage broker</a><a class="title">Buying a home: Buyer's guide</a></div>
+              <div class="entry">
+
+                <?php
+                $flag = 0;
+                $posts_per_page = 7;
+                $args = array(
+                  'category_name' => 'policy-news',                                         
+                  'posts_per_page' => $posts_per_page,
+                  'paged' => ( get_query_var('paged') ? get_query_var('paged') : 1)
+                  );
+                query_posts($args);
+
+                if(have_posts()) : 
+                  while (have_posts()) :
+                    the_post();
+                  ?>
+                    <?php 
+                      if($flag > 1)
+                      {
+                      ?>
+                        <div class="title">
+                        <a href="<?php the_permalink(); ?>" class="policy-title">
+                          <?php the_title();?>
+                        </a>  
+                      </div>
+                      <?php
+                    }
+                    $flag ++;
+                    ?>
+                  <?php 
+                  endwhile; endif;
+                  ?>
+                  <?php
+                  wp_reset_query();
+                  ?>
+              </div>
             </div>
-             <div class="link-more text-right"><a href="" class="link">See more</a></div>
+             <div class="link-more text-right"><a href="http://tintuc.local/policy-news/" class="link">See more</a></div>
         </div>
       </div>
+    </div>
     </div>
 <?php get_footer(); ?>
