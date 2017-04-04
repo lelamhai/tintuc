@@ -3,6 +3,10 @@
 ** Phone: 0969128313
 */
 
+a:hover{
+  text-decoration: underline;
+}
+
 .summary .title a {
     overflow: hidden;
     text-overflow: ellipsis;
@@ -69,7 +73,7 @@
 }
 
 .text-right {
-  padding: 10px 10px;
+  padding-right: 10px;
 }
 
 .entry-right {
@@ -129,3 +133,38 @@
 .link-more {
   padding-bottom: 30px;
 }
+
+.wrap-img-slider {
+  position: relative;
+}
+
+.wrap-img-slider a img {
+  width: 100%;
+  height: auto;
+}
+
+.wrap-img-slider a {
+  color: #fff;
+}
+
+.wrap-img-slider a:hover {
+  color: #fff;
+}
+
+.wrap-img-slider a .title-post-wrap {
+    background: rgba(0, 0, 0, 0.6);
+    position: absolute;
+    bottom: 0px;
+    width: 100%;
+    padding: 15px 50px;
+    min-height: 80px;
+}
+
+/*.wrap-img-slider a h3 {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  display: -webkit-box;
+  max-height: 100%;
+  -webkit-line-clamp: 1;
+  -webkit-box-orient: vertical;
+}*/

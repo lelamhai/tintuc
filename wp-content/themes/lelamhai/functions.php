@@ -92,3 +92,71 @@ function setPostViews($postID) {// hàm này dùng để set và update số lư
         update_post_meta($postID, $count_key, $count); // update count
     }
 }
+
+/*
+*method:  wpb_get_post_views: get count views, wpb_set_post_views: set acount views, wpb_track_post_views: Sort view
+*use get/set views post
+*/
+function wpb_set_post_views($postID) {
+    $count_key = 'wpb_post_views_count';
+    $count = get_post_meta($postID, $count_key, true);
+    if($count==''){
+        $count = 0;
+        delete_post_meta($postID, $count_key);
+        add_post_meta($postID, $count_key, '0');
+    }else{
+        $count++;
+        update_post_meta($postID, $count_key, $count);
+    }
+}
+//To keep the count accurate, lets get rid of prefetching
+remove_action( 'wp_head', 'adjacent_posts_rel_link_wp_head', 10, 0);
+
+
+function wpb_track_post_views ($post_id) {
+    if ( !is_single() ) return;
+    if ( empty ( $post_id) ) {
+        global $post;
+        $post_id = $post->ID;    
+    }
+    wpb_set_post_views($post_id);
+}
+add_action( 'wp_head', 'wpb_track_post_views');
+
+
+function wpb_get_post_views($postID){
+    $count_key = 'wpb_post_views_count';
+    $count = get_post_meta($postID, $count_key, true);
+    if($count==''){
+        delete_post_meta($postID, $count_key);
+        add_post_meta($postID, $count_key, '0');
+        return "0 View";
+    }
+    return $count/2;
+}
+
+/*
+*method: new_excerpt_length
+*use: It is count length, if length long change .....
+*/
+
+function new_excerpt_length($length)
+    {
+        return 9;
+    }
+    function new_excerpt_length_side_bar($length)
+    {
+        return 5;
+    }
+    function sub_about_excerpt_length($length)
+    {
+      return 200;
+    }
+    function new_excerpt_more($more){
+        global $post;
+        return "<a class='excerpt-more' href='".get_permalink($post->ID)."'>...Xem tiếp</a>";
+    }
+    function new_excerpt_nomore($more){
+        global $post;
+        return "<a class='excerpt-more' href='".get_permalink($post->ID)."'>...</a>";
+    }

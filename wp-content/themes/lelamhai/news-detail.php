@@ -4,7 +4,10 @@
  */
 ?>
 <?php get_header(); ?>
-      <?php setPostViews(get_the_ID()); ?>
+      <?php setPostViews(get_the_ID()); 
+      wpb_set_post_views(get_the_ID());
+
+      ?>
       <?php 
         $categories = get_the_category();
         wp_list_pluck( $categories, 'name' );
@@ -206,15 +209,11 @@
     </div>
           <div class="breadcrumbs">
             <div class="container">
-            <!-- <a href="">News</a>
-            <span class="symbol">></span>
-            <a href=""> -->
             <?php 
             foreach (wp_list_pluck( $categories, 'name' ) as $key => $value) {
-              //echo wp_list_pluck( $categories, 'name' )[0];
               if(strcmp("news",wp_list_pluck( $categories, 'name' )[0]) == 0)
               { ?>
-              <a href="">
+              <a href="http://tintuc.local/news/">
                 <?php 
                   echo wp_list_pluck( $categories, 'name' )[0];
                 ?>
@@ -233,7 +232,6 @@
               }
             }
             ?>
-              <!-- </a> -->
             <span class="symbol">></span><a href="" class="current"><?php the_title();?></a>
             </div>
           </div>
@@ -242,7 +240,7 @@
         <div class="col-xs-8">
           <div class="news-detail">
             <h1 class="title"><?php the_title();?></h1>
-            <div class="author">Author: <b>Pham Phuong Thao</b></div>
+            <!-- <div class="author">Author: <b>Pham Phuong Thao</b></div> -->
             <div class="date"><i><?php echo get_the_date('d-m-Y'); ?></i></div>
             <div class="wysiwyg">
               <?php the_content();?>

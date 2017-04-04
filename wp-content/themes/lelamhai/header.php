@@ -3,9 +3,15 @@
 <head>
 <meta charset="<?php bloginfo( 'charset' ); ?>" />
 <meta name="viewport" content="width=device-width" />
-<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:400,100,300,500,700,900">
-  <link rel="stylesheet" href="<?php echo get_bloginfo("template_directory"); ?>/asset/css/style.css">
   <link rel="stylesheet" href="<?php echo get_bloginfo("template_directory"); ?>/asset/css/custome.css">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:400,100,300,500,700,900">
+  <link rel="stylesheet" href="<?php echo get_bloginfo("template_directory"); ?>/asset/css/style.css">
+  <!-- add css, js -->
+  <link rel="stylesheet" href="<?php echo get_bloginfo("template_directory"); ?>/asset/css/bootstrap.min.css">
+  <link rel="stylesheet" href="<?php echo get_bloginfo("template_directory"); ?>/asset/css/bootstrap-theme.min.css">
+  <link rel="stylesheet" type="text/css" href="<?php echo get_bloginfo("template_directory"); ?>/asset/css/slider/slick.css">
+  <link rel="stylesheet" type="text/css" href="<?php echo get_bloginfo("template_directory"); ?>/asset/css/slider/slick-theme.css">
+  <!-- end -->
   <script type="text/javascript" src="<?php echo get_bloginfo("template_directory"); ?>/asset/js/jquery.js"></script>
   <script type="text/javascript" src="<?php echo get_bloginfo("template_directory"); ?>/asset/js/bootstrap.js"></script>  
   <script type="text/javascript" src="<?php echo get_bloginfo("template_directory"); ?>/asset/js/jquery.mCustomScrollbar.concat.min.js"></script>

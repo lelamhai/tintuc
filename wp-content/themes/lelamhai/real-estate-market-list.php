@@ -79,26 +79,46 @@
   </div>
     <div class="container">
       <div class="other-projects">
-        <h3 class="title-block">OTHER CATEGORIES</h3>
-        <div class="list-project">
-        <div class="flexslider slider-other">
-          <ul class="slides">
-            <li><a href=""><img src="<?php echo get_bloginfo("template_directory"); ?>/asset/img/data-example/other-pro1.png">
-              <h4 class="caption">CATEGORY 1</h4></a></li>
-              <li><a href=""><img src="<?php echo get_bloginfo("template_directory"); ?>/asset/img/data-example/other-pro2.png">
-                <h4 class="caption">CATEGORY 2</h4></a></li>
-                <li><a href=""><img src="<?php echo get_bloginfo("template_directory"); ?>/asset/img/data-example/other-pro3.png">
-                  <h4 class="caption">CATEGORY 3</h4></a></li>
-                  <li><a href=""><img src="<?php echo get_bloginfo("template_directory"); ?>/asset/img/data-example/other-pro1.png">
-                    <h4 class="caption">CATEGORY 4</h4></a></li>
-                    <li><a href=""><img src="<?php echo get_bloginfo("template_directory"); ?>/asset/img/data-example/other-pro2.png">
-                      <h4 class="caption">CATEGORY 5 </h4></a></li>
-                      <li><a href=""><img src="<?php echo get_bloginfo("template_directory"); ?>/asset/img/data-example/other-pro2.png">
-                        <h4 class="caption">CATEGORY 6 </h4></a></li>
-                      </ul>
-                    </div>
-                  </div>
-              </div>
+                <h3 class="title-block">OTHER CATEGORIES</h3>
+               <div class="row">
+                <div class="slider autoplay">
+
+                  <?php
+                  $posts_per_page = 6;
+                  $args = array(
+                    'category_name' => 'real-estate-market',                                         
+                    'posts_per_page' => $posts_per_page,
+                    'paged' => ( get_query_var('paged') ? get_query_var('paged') : 1)
+                    );
+                  query_posts($args);
+
+                  if(have_posts()) : 
+                    while (have_posts()) :
+                      the_post();
+                    ?>
+
+                    <div class="col-md-4">
+                  <!-- <?php  
+                  the_post_thumbnail() 
+                  ?> -->
+                  <div class="wrap-img-slider">
+                    <a href="<?php the_permalink(); ?>">
+                     <img class = "img-slider" src="<?php echo get_bloginfo("template_directory"); ?>/asset/img/data-example/other-pro1.png">
+                     <div class="title-post-wrap">
+                     <h3><?php the_title()?></h3>
+                     </div>
+                   </a>
+                 </div>
+               </div>
+               <?php 
+               endwhile; endif;
+               ?>
+               <?php
+               wp_reset_query();
+               ?>
+             </div>
+           </div>
+          </div>
             </div>
           </div>
             <?php get_footer(); ?>
