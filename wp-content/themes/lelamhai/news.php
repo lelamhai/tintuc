@@ -116,40 +116,25 @@
         <h2 class="title-block">POPULAR NEWS</h2>
         <div class="list-style4">
           <div class="entry">
-            <?php
-            $posts_per_page = 6;
-            $args = array(
-              'category_name' => 'news',                                         
-              'posts_per_page' => $posts_per_page,
-              'paged' => ( get_query_var('paged') ? get_query_var('paged') : 1)
-              );
-            query_posts($args);
-
-            if(have_posts()) : 
-              while (have_posts()) :
-                the_post();
-              ?>
-              <?php 
-              $image = wp_get_attachment_image_src( get_post_thumbnail_id( $post->ID ), 'Large' ); 
-              ?>
-              
-              <div class="item">
-                <div class="thumbnail">
-                  <a href="<?php the_permalink(); ?>">
-                    <div style="background-image: url(<?php echo $image[0]; ?>)" class="img"></div>
-                  </a>
-                </div>
-                <div class="summary">
-                  <h3 class="title"><a href="<?php the_permalink(); ?>"><?php the_title();?></a></h3>
-                  <div class="entry news-hot-description"><a href="<?php the_permalink(); ?>"><?php echo get_field( "description", $post->ID );?></a></div>
-                </div>
+            <?php 
+            $popularpost = new WP_Query( array( 'posts_per_page' => 6, 'meta_key' => 'wpb_post_views_count', 'orderby' => 'meta_value_num', 'order' => 'DESC'  ) );
+            while ( $popularpost->have_posts() ) : $popularpost->the_post();
+            $image = wp_get_attachment_image_src( get_post_thumbnail_id( $post->ID ), 'thumbnail' ); 
+            ?>
+            <div class="item">
+              <div class="thumbnail">
+                <a href="<?php the_permalink(); ?>">
+                  <div style="background-image: url(<?php echo $image[0]; ?>)" class="img"></div>
+                </a>
               </div>
-              <?php 
-              endwhile; endif;
-              ?>
-              <?php
-              wp_reset_query();
-              ?>
+              <div class="summary">
+                <h3 class="title"><a href="<?php the_permalink(); ?>"><?php the_title();?></a></h3>
+                <div class="entry news-item"><a href="<?php the_permalink(); ?>"><?php echo get_field( "description", $post->ID );?></a></div>
+              </div>
+            </div>
+            <?php 
+            endwhile;
+            ?>
           <div class="link-more text-right"><a href="" class="link">See more</a></div>
         </div>
       </div>

@@ -160,3 +160,44 @@ function new_excerpt_length($length)
         global $post;
         return "<a class='excerpt-more' href='".get_permalink($post->ID)."'>...</a>";
     }
+/*
+* method: 
+* Use: it is use load more
+*/
+add_action('wp_ajax_load_posts_by_ajax', 'load_posts_by_ajax_callback');
+add_action('wp_ajax_nopriv_load_posts_by_ajax', 'load_posts_by_ajax_callback');
+function load_posts_by_ajax_callback() {
+    check_ajax_referer('load_more_posts', 'security');
+    $paged = $_POST['page'];
+    $args = array(
+        'category_name' => 'news',
+        'post_type' => 'post',
+        'post_status' => 'publish',
+        'posts_per_page' => '2',
+        'paged' => $paged,
+    );
+    $my_posts = new WP_Query( $args );
+    if ( $my_posts->have_posts() ) :
+        ?>
+        <?php while ( $my_posts->have_posts() ) : $my_posts->the_post() ?>
+            <?php 
+                $image = wp_get_attachment_image_src( get_post_thumbnail_id( $post->ID ), 'thumbnail' );  
+              ?>
+             <div class="item">
+                  <div class="thumbnail">
+                    <a href="<?php the_permalink(); ?>">
+                      <div style="background-image: url(<?php echo $image[0]; ?>)" class="img"></div>
+                    </a>
+                  </div>
+                  <div class="summary">
+                    <h3 class="title"><a href="<?php the_permalink(); ?>"><?php the_title();?></a></h3>
+                    <div class="entry news-item"><a href="<?php the_permalink(); ?>"><?php echo get_field( "description", $post->ID );?></a></div>
+                  </div>
+                </div>
+        <?php endwhile ?>
+
+        <?php
+    endif;
+ 
+    wp_die();
+}

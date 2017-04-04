@@ -97,7 +97,7 @@
                       the_post();
                     ?>
 
-                    <div class="col-md-4">
+                    <div id="excerpt-long" class="col-md-4">
                   <!-- <?php  
                   the_post_thumbnail() 
                   ?> -->
