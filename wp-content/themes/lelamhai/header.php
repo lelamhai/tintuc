@@ -6,6 +6,7 @@
   <link rel="stylesheet" href="<?php echo get_bloginfo("template_directory"); ?>/asset/css/custome.css">
   <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:400,100,300,500,700,900">
   <link rel="stylesheet" href="<?php echo get_bloginfo("template_directory"); ?>/asset/css/style.css">
+  <link rel="stylesheet" href="<?php echo get_bloginfo("template_directory"); ?>/asset/css/reponsive.css">
   <!-- add css, js -->
   <link rel="stylesheet" href="<?php echo get_bloginfo("template_directory"); ?>/asset/css/bootstrap.min.css">
   <link rel="stylesheet" href="<?php echo get_bloginfo("template_directory"); ?>/asset/css/bootstrap-theme.min.css">
@@ -20,7 +21,7 @@
 <?php wp_head(); ?>
 </head>
 <body>
-<div class="top-header">
+<!-- <div class="top-header">
       <div class="container">
         <div class="pull-left item-dropdown">
           <div class="dropdown custom-select menu">
@@ -61,4 +62,68 @@
         <div class="pull-right item-dropdown"><a class="notify"><span class="icon-home icon"></span><span class="count">3</span></a></div>
       </div>
     </div>
-    <div class="header header-site">
+    <div class="header header-site"> -->
+    <header>
+    <!-- <div class="header-top">
+      <div class="container">
+        <div class="row">
+          <div class="col-md-2">
+              <ul class="wrap-top-left">
+                <li>
+                  <select>
+                    <option>
+                      ENG
+                    </option>
+                    <option>
+                      VI
+                    </option>
+                  </select>
+                </li>
+                <li>
+                  <select>
+                    <option>
+                      USD
+                    </option>
+                    <option>
+                      VND
+                    </option>
+                  </select>
+                </li>
+              </ul>
+          </div>
+          <div class="col-md-6">9</div>
+          <div class="col-md-4">
+            
+          </div>
+        </div>
+      </div>  
+    </div> -->
+    <div class="header cus-header header-site ">
+      <nav class="navbar cus-navbar navbar-default cus-navbar-default">
+        <div class="container">
+          <div class="navbar-header no-margin-left cus-no-margin-left no-margin-right cus-no-margin-right">
+            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+              <span class="sr-only">Toggle avigation</span>
+              <span class="icon-bar"></span>
+              <span class="icon-bar"></span>
+              <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" href="/"><img class="img-responsive" src="<?php echo get_bloginfo("template_directory"); ?>/asset/img/logo.png" alt="Jinn logo" /></a>
+          </div>
+          <div id="navbar" class="main-menu navbar-collapse collapse no-margin-left no-margin-right">
+            <ul class="nav navbar-nav navbar-right top-menu cus-top-menu no-margin-right no-margin-left">
+              <li><a href="/projects" class=""> Dự án</a></li>
+
+              <li><a href="/houses/for-sale" class=""> Cần Bán</a></li>
+
+              <li><a href="/houses/for-rent" class=""> Cho thuê</a></li>
+
+              <li><a href="/contact" class=""> Liên hệ</a></li>
+            </ul>
+          </div>
+        </div>
+      </nav>
+      <div class="clear"></div>
+    </div>
+  </header>
+  <div id="main">

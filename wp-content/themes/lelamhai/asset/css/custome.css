@@ -2,6 +2,69 @@
 ** Author: Lê Lam Hải
 ** Phone: 0969128313
 */
+.cus-header {
+    padding: 11px 0 17px 0 !important;
+    position: relative !important;
+}
+
+.cus-navbar-default {
+    border-color: white !important;
+}
+
+.cus-navbar {
+    background-color: white !important;
+    position: relative !important;
+    min-height: 85px !important;
+    margin-bottom: 20px !important;
+    border: 1px solid transparent !important;
+}
+
+.cus-no-margin-left {
+    margin-left: 0 !important;
+}
+
+.cus-no-margin-right {
+    margin-right: 0 !important;
+}
+
+.cus-top-menu li a {
+    font-size: 15px;
+    color: #101010;
+    font-weight: 700;
+    text-transform: uppercase;
+    padding: 20px 20px 8px;
+    display: block;
+}
+
+.wrap-footer{
+  font-size: 12px;
+  background-color: #aa1a27;
+  padding: 40px 0;
+  color: #fff;
+}
+
+.footer-phone {
+  padding-bottom: 30px;
+}
+
+.footer-phone b span {
+  white-space: nowrap ;
+}
+
+.footer-wrap-follow {
+  font-weight: 500;
+  text-transform: uppercase;  
+}
+
+.wrap-follow {
+  padding-top: 20px;
+  border-top: 1px solid #fff;
+}
+
+
+
+
+
 
 a:hover{
   text-decoration: underline;
