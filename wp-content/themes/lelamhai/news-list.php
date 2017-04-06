@@ -171,7 +171,7 @@
                     <a href="<?php the_permalink(); ?>">
                      <img class = "img-slider" src="<?php echo get_bloginfo("template_directory"); ?>/asset/img/data-example/other-pro1.png">
                      <div class="title-post-wrap">
-                     <h3><?php the_title()?></h3>
+                        <h3><?php the_title()?></h3>
                      </div>
                    </a>
                  </div>

@@ -1,0 +1,31 @@
+.wrap-slider {
+	padding-bottom: 20px;
+}
+
+.wrap-img-slider a img {
+  width: 100%;
+  height: auto;
+}
+
+.slick-prev ,
+.slick-next {
+  display: none !important;
+}
+
+.wrap-img-slider {
+  position: relative;
+}
+
+.title-post-wrap {
+    background: rgba(0, 0, 0, 0.6);
+    position: absolute;
+    bottom: 0px;
+    width: 100%;
+    padding: 30px 45px;
+    min-height: 80px;
+}
+
+.title-post-wrap b {
+  font-size: 14px;
+  color: #fff;
+}

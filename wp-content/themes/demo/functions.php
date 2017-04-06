@@ -174,6 +174,7 @@ function jinn_imagesize() {
     add_image_size('img-big', 458, 343, true);
     add_image_size('img-item', 218, 165, true);
     add_image_size('img-sidebar', 274, 189, true);
+    add_image_size('img-slider', 300, 230, true);
 }
 add_action('after_setup_theme', 'jinn_imagesize');
 

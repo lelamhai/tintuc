@@ -106,8 +106,11 @@
     <section class="bg-silver">
     	<div class="container">
     		<div class="row">
-    			<h3 class="title-category">REAL ESTATE MARKET</h3>
-
+                <div class="col-md-12 col-sm-12 col-xs-12">
+                    <h3 class="title-category">REAL ESTATE MARKET</h3>    
+                </div>
+            </div>
+            <div class="row">
                 <?php
                 $posts_per_page = 2;
                 $args = array(
@@ -143,74 +146,159 @@
                         </div>
                     </div>
                 </div>
-        <?php 
-        endwhile; endif;
-        ?>
-        <?php
-        wp_reset_query();
-        ?>
-<!-- 
-    			<div class="col-md-3 col-sm-3 col-xs-12">3</div>
-    			<div class="col-md-3 col-sm-3 col-xs-12">3</div> -->
+                <?php 
+                endwhile; endif;
+                ?>
+                <?php
+                wp_reset_query();
+                ?>
+
     			<div class="col-md-6 col-sm-6 col-xs-12">
-    				<ul>
-    					<li>
-    						<a href="">1</a>
-    					</li>
-    					<li>
-    						<a href="">2</a>
-    					</li>
-    					<li>
-    						<a href="">3</a>
-    					</li>
-    					<li>
-    						<a href="">4</a>
-    					</li>
-    					<li>
-    						<a href="">5</a>
-    					</li>
+    				<ul class="wrap-content-left">
+                       <?php
+                       $flag = 0;
+                       $posts_per_page = 7;
+                       $args = array(
+                          'category_name' => 'real-estate-market',                                         
+                          'posts_per_page' => $posts_per_page,
+                          'paged' => ( get_query_var('paged') ? get_query_var('paged') : 1)
+                          );
+                       query_posts($args);
+
+                       if(have_posts()) : 
+                          while (have_posts()) :
+                            the_post();
+                        ?>
+                        <?php 
+                        if($flag > 1)
+                        {
+                          ?>
+                        <li>
+                          <a href="<?php the_permalink(); ?>"><?php the_title();?></a>
+                        </li>
+                          
+                      <?php
+                  }
+                  $flag ++;
+                  ?>
+                  <?php 
+                  endwhile; endif;
+                  ?>
+                  <?php
+                  wp_reset_query();
+                  ?>
     				</ul>
     			</div>
-    			<div class="see-more">
-    				<a href="">
-    					<b>See more</b><img src="<?php echo get_bloginfo("template_directory"); ?>/asset/img/link-d.png">
-    				</a>
-    			</div>
+    			
     		</div>
+            <div class="row">
+              <div class="col-md-12">
+                <div class="see-more">
+                    <a href="">
+                        <b>See more</b><img src="<?php echo get_bloginfo("template_directory"); ?>/asset/img/link-d.png">
+                    </a>
+                </div>
+              </div>
     	</div>
     </section>
 
     <section class="bg-white">
-    	<div class="container">
-    		<div class="row">
-    			<h3 class="title-category">POLICY NEWS</h3>
-    			<div class="col-md-3 col-sm-3 col-xs-12">3</div>
-    			<div class="col-md-3 col-sm-3 col-xs-12">3</div>
-    			<div class="col-md-6 col-sm-6 col-xs-12">
-    				<ul>
-    					<li>
-    						<a href="">1</a>
-    					</li>
-    					<li>
-    						<a href="">2</a>
-    					</li>
-    					<li>
-    						<a href="">3</a>
-    					</li>
-    					<li>
-    						<a href="">4</a>
-    					</li>
-    					<li>
-    						<a href="">5</a>
-    					</li>
-    				</ul>
-    			</div>
-    			<div class="see-more">
-    				<a href="">
-    					<b>See more</b><img src="<?php echo get_bloginfo("template_directory"); ?>/asset/img/link-d.png">
-    				</a>
-    			</div>
-    		</div>
-    	</div>
-    </section>
+        <div class="container">
+            <div class="row">
+                <div class="col-md-12 col-sm-12 col-xs-12">
+                    <h3 class="title-category">REAL ESTATE MARKET</h3>    
+                </div>
+            </div>
+            <div class="row">
+                <?php
+                $posts_per_page = 2;
+                $args = array(
+                  'category_name' => 'policy-news',                                         
+                  'posts_per_page' => $posts_per_page,
+                  'paged' => ( get_query_var('paged') ? get_query_var('paged') : 1)
+                  );
+                query_posts($args);
+
+                if(have_posts()) : 
+                  while (have_posts()) :
+                    the_post();
+                ?>
+                <div class="col-md-3 col-sm-3 col-xs-12">
+                    <div class="wrap-category">
+                        <div class="img-category">
+                            <a href="<?php the_permalink(); ?>"><?php the_post_thumbnail('img-item'); ?></a>
+                        </div>
+                        <div class="wrap-item-category">
+                            <div class="item-title-category">
+                                <a href="<?php the_permalink(); ?>">
+                                    <h4>
+                                        <?php the_title();?>
+                                    </h4>
+                                </a>    
+                            </div>
+                            <div class="item-content-category">
+                                <a href="<?php the_permalink(); ?>">
+                                    <?php echo get_field( "policy_news", $post->ID );?>
+                                </a>    
+                            </div>
+                            
+                        </div>
+                    </div>
+                </div>
+                <?php 
+                endwhile; endif;
+                ?>
+                <?php
+                wp_reset_query();
+                ?>
+
+                <div class="col-md-6 col-sm-6 col-xs-12">
+                    <ul class="wrap-content-left">
+                     <?php
+                     $flag = 0;
+                     $posts_per_page = 7;
+                     $args = array(
+                      'category_name' => 'policy-news',                                         
+                      'posts_per_page' => $posts_per_page,
+                      'paged' => ( get_query_var('paged') ? get_query_var('paged') : 1)
+                      );
+                     query_posts($args);
+
+                     if(have_posts()) : 
+                      while (have_posts()) :
+                        the_post();
+                    ?>
+                    <?php 
+                    if($flag > 1)
+                    {
+                      ?>
+                      <li>
+                          <a href="<?php the_permalink(); ?>"><?php the_title();?></a>
+                      </li>
+                      
+                      <?php
+                  }
+                  $flag ++;
+                  ?>
+                  <?php 
+                  endwhile; endif;
+                  ?>
+                  <?php
+                  wp_reset_query();
+                  ?>
+              </ul>
+          </div>
+          
+      </div>
+      <div class="row">
+        <div class="col-md-12">
+          <div class="see-more">
+            <a href="">
+              <b>See more</b><img src="<?php echo get_bloginfo("template_directory"); ?>/asset/img/link-d.png">
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
 <?php get_footer(); ?>

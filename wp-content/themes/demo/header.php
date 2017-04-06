@@ -16,6 +16,7 @@
   <link rel="stylesheet" href="<?php echo get_bloginfo("template_directory"); ?>/asset/css/reponsive.css">
   <link rel="stylesheet" href="<?php echo get_bloginfo("template_directory"); ?>/asset/css/common.css">
   <link rel="stylesheet" href="<?php echo get_bloginfo("template_directory"); ?>/asset/css/news.css">
+  <link rel="stylesheet" href="<?php echo get_bloginfo("template_directory"); ?>/asset/css/news-list.css">
   <link rel="stylesheet" type="text/css" href="<?php echo get_bloginfo("template_directory"); ?>/asset/css/slider/slick.css">
   <link rel="stylesheet" type="text/css" href="<?php echo get_bloginfo("template_directory"); ?>/asset/css/slider/slick-theme.css">
 </head>
