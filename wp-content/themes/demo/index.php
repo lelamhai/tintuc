@@ -206,7 +206,7 @@
         <div class="container">
             <div class="row">
                 <div class="col-md-12 col-sm-12 col-xs-12">
-                    <h3 class="title-category">REAL ESTATE MARKET</h3>    
+                    <h3 class="title-category">POLICY NEWS</h3>    
                 </div>
             </div>
             <div class="row">

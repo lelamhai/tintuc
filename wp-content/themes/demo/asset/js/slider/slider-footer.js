@@ -1,10 +1,3 @@
-/*$('.autoplay').slick({
-  slidesToShow: 4,
-  slidesToScroll: 1,
-  autoplay: true,
-  autoplaySpeed: 2000,
-});*/
-
 $('.autoplay').slick({
 	/*Sceen Desktop and Landscape Tablet*/
   	slidesToShow: 4,
