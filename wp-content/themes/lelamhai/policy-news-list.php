@@ -4,7 +4,6 @@
  */
 ?>
 <?php get_header(); ?>
-
 <div class="container">
   <div class="logo pull-left"><a><img src="<?php echo get_bloginfo("template_directory"); ?>/asset/img/logo.png" alt=""></a></div>
   <div class="main-menu pull-right">

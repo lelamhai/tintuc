@@ -4,15 +4,35 @@
  */
 ?>
 <?php get_header(); ?>	
-	<section class="slider-vertical bg-silver">
-		<div class="container">
-			<div class="row">
-                <div class="col-md-12">
-				    <h3 class="title-category">HOT NEWS</h3>
-                </div>
-			</div>
-		</div>
-	</section>
+    <section class="slider-vertical bg-silver">
+      <div class="container">
+       <div class="row">
+        <div class="col-md-12">
+          <h3 class="title-category">HOT NEWS</h3>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-md-8 col-sm-8 col-xs-8">
+          <div class="wrap-list-post-news">
+            <img stt="0" src="<?php echo get_bloginfo("template_directory"); ?>/asset/img/banner/1.png"> 
+            <img stt="1" src="<?php echo get_bloginfo("template_directory"); ?>/asset/img/banner/1.png" style = "display:none"> 
+            <img stt="2" src="<?php echo get_bloginfo("template_directory"); ?>/asset/img/banner/1.png" style = "display:none"> 
+            <img stt="3"src="<?php echo get_bloginfo("template_directory"); ?>/asset/img/banner/1.png" style = "display:none"> 
+            <img stt="4" src="<?php echo get_bloginfo("template_directory"); ?>/asset/img/banner/1.png" style = "display:none"> 
+          </div>
+        </div>
+        <div class="col-md-4 col-sm-4 col-xs-4">
+          <ul class="title-list-post-news">
+            <li><a href="">1</a></li>
+            <li><a href="">2</a></li>
+            <li><a href="">3</a></li>
+            <li><a href="">4</a></li>
+            <li><a href="">5</a></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+    </section>
 
     <section class="bg-white">
     	<div class="container">
@@ -93,7 +113,7 @@
     		<div class="row">
                 <div class="col-md-12">
                     <div class="see-more">
-                        <a href="">
+                        <a href="http://tintuc.local/news-list/">
                             <b>See more</b><img src="<?php echo get_bloginfo("template_directory"); ?>/asset/img/link-d.png">
                         </a>
                     </div>
@@ -194,7 +214,7 @@
             <div class="row">
               <div class="col-md-12">
                 <div class="see-more">
-                    <a href="">
+                    <a href="http://tintuc.local/real-estate-market-list/">
                         <b>See more</b><img src="<?php echo get_bloginfo("template_directory"); ?>/asset/img/link-d.png">
                     </a>
                 </div>
@@ -293,7 +313,7 @@
       <div class="row">
         <div class="col-md-12">
           <div class="see-more">
-            <a href="">
+            <a href="http://tintuc.local/policy-news-list/">
               <b>See more</b><img src="<?php echo get_bloginfo("template_directory"); ?>/asset/img/link-d.png">
             </a>
           </div>

@@ -2,6 +2,7 @@
 ** Author: Lê Lam Hải
 ** Phone: 0969128313
 */
+
 .box-wrap,
 .wrap-big-item {
 	background-color: #f0f1f1;
@@ -116,4 +117,13 @@
 
 .wrap-category {
 	border: 1px solid #d0d0d0;
+}
+
+.wrap-list-post-news img {
+	width: 100%;
+	height: auto;
+}
+
+.title-list-post-news li {
+	margin-bottom: 20px;
 }

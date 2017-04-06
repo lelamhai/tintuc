@@ -5,42 +5,60 @@
 ?>
 <?php get_header(); ?>
 <?php 
-	setPostViews(get_the_ID()); 
 	wpb_set_post_views(get_the_ID());
 ?>
 <?php 
 	$categories = get_the_category();
-	wp_list_pluck( $categories, 'name' );
 ?>
-
 <section class="wrap-detail-post">
 	<div class="container">
 		<div class="row">
 			<div class="col-md-12 col-sm-12 col-xs-12">
 				<div class="wrap-category-path">
-					<!-- <a href="http://tintuc.local/news/">New</a>
-					<span class="symbol">&gt;</span> -->
 					<?php 
-					foreach (wp_list_pluck( $categories, 'name' ) as $key => $value) {
-						if(strcmp("news",wp_list_pluck( $categories, 'name' )[0]) == 0)
-							{ ?>
-						<a href="http://tintuc.local/news/">
-							<?php 
-							echo wp_list_pluck( $categories, 'name' )[0];
+				foreach (wp_list_pluck( $categories, 'slug' ) as $key => $value) {
+					$temp = wp_list_pluck( $categories, 'slug' )[0];
+
+					switch ($temp) {
+						case 'news':
 							?>
-						</a>
-						<?php
-					} else {
-						?>
-						<a href="">News</a>
-						<span class="symbol">></span>
-						<a href="">
+							<a href="http://tintuc.local/news-list/">
+								<?php 
+								echo wp_list_pluck( $categories, 'name' )[0];
+								?>
+							</a><span class="symbol">&gt;</span> 
 							<?php 
-							echo wp_list_pluck( $categories, 'name' )[0];
+							break;
+
+						case 'real-estate-market':
 							?>
-						</a>
-						<span class="symbol">&gt;</span> 
-						<?php
+							<a href="http://tintuc.local/news/">News</a>
+							<span class="symbol">></span>
+							<a href="http://tintuc.local/real-estate-market-list/">
+								<?php 
+								echo wp_list_pluck( $categories, 'name' )[0];
+								?>
+							</a>
+							<span class="symbol">&gt;</span> 
+							<?php 
+							break;
+
+						case 'policy-news':
+							?>
+							<a href="http://tintuc.local/news/">News</a>
+							<span class="symbol">></span>
+							<a href="http://tintuc.local/policy-news-list/">
+								<?php 
+								echo wp_list_pluck( $categories, 'name' )[0];
+								?>
+							</a>
+							<span class="symbol">&gt;</span> 
+							<?php 
+							break;
+						
+						default:
+							# code...
+							break;
 					}
 				}
 				?>
@@ -88,11 +106,7 @@
 							?>
 						</ul>
 						<div class="see-more-popular">
-							<span>
-								<a class ="esta-button" href="" >
-									Xem thêm
-								</a>
-							</span>
+							<div class="bottom text-center"><a class="btn esta-button">Xem thêm</a></div>
 						</div>
 					</div>
 				</div>
