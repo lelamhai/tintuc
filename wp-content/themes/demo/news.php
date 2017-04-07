@@ -4,13 +4,13 @@
  */
 ?>
 <?php get_header(); ?>
-fdsdfsdffda
+<!-- fdsdfsdffda
 	<span>
    <i class="jinn-icon jinn-soth-black">
      
    </i> 
-  </span>
-    <section class="slider-vertical bg-silver">
+  </span> -->
+    <!-- <section class="slider-vertical bg-silver">
       <div class="container">
        <div class="row">
         <div class="col-md-12">
@@ -38,7 +38,111 @@ fdsdfsdffda
         </div>
       </div>
     </div>
-    </section>
+    </section> -->
+    <section>
+     <div class="container">
+       <div class="row">
+        <div class="col-md-12">
+          <h3 class="title-category">HOT NEWS</h3>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-sm-8">
+          <div class="slider">
+            <div id="home-slider" class="carousel slide" data-ride="carousel" data-interval="false">
+              <!-- Wrapper for slides -->
+              <div class="carousel-inner" role="listbox">
+
+                <?php
+                $posts_per_page = 5;
+                $args = array(
+                  'category_name' => 'news',                                         
+                  'posts_per_page' => $posts_per_page,
+                  'paged' => ( get_query_var('paged') ? get_query_var('paged') : 1)
+                  );
+                query_posts($args);
+
+                if(have_posts()) : 
+                  while (have_posts()) :
+                    the_post();
+                  ?>
+                  <?php 
+                  $image = wp_get_attachment_image_src( get_post_thumbnail_id( $post->ID ), 'Large' ); 
+                  ?>
+                  <?php if(get_field( "news_hot", $post->ID ))
+                  {?>
+                  <!--  <div class="title"><span class="text"><a href="<?php the_permalink(); ?>"><?php the_title();?></a></span></div> -->
+                  
+
+                  <div class="item">
+                    <div class="thumbnail">
+                      <a href="<?php the_permalink(); ?>">
+                        <div style="background-image: url(<?php echo $image[0]; ?>)" class="img"></div>
+                      </a>
+                    </div>
+                    <div class="caption">
+                      <div class="title"><?php the_title();?></div>
+                    </div>
+                  </div>
+                  <?php } ?>
+                  
+                  <?php 
+                  endwhile; endif;
+                  ?>
+                  <?php
+                  wp_reset_query();
+                  ?>
+
+
+                
+                <div class="item active">
+                  <img class="img-responsive"  src="img/img1.jpg" alt="...">
+                  <div class="carousel-caption">
+                    <h4></h4>
+                  </div>
+                </div>
+                <div class="item">
+                  <img class="img-responsive" src="img/img2.jpg" alt="...">
+                  <div class="carousel-caption">
+                    <h4></h4>
+                  </div>
+                </div>
+                <div class="item">
+                  <img src="img/img3.jpg" alt="...">
+                  <div class="carousel-caption">
+                    <h4></h4>
+                  </div>
+                </div>
+                <div class="item">
+                  <img src="img/img4.jpg" alt="...">
+                  <div class="carousel-caption">
+                    <h4></h4>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="col-sm-4">
+          <div class="slider-list">
+            <a href="#" data-target="#home-slider" data-slide-to="0">
+              <p>1</p>
+            </a>
+            <a href="#" data-target="#home-slider" data-slide-to="1">
+              <p>2</p>
+            </a>
+
+            <a href="#" data-target="#home-slider" data-slide-to="2">
+              <p>3</p>
+            </a>
+            <a href="#" data-target="#home-slider" data-slide-to="3">
+              <p>4</p>
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
 
     <section class="bg-white">
     	<div class="container">
