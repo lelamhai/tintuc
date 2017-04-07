@@ -4,6 +4,7 @@
  */
 ?>
 <?php get_header(); ?>
+<div id="category">real-estate-market</div>
 <section class="bg-white">
 	<div class="container">
 		<div class="row">
@@ -109,9 +110,7 @@
 		<div class="row">
 			<div class="col-md-12">
 				<div class="see-more">
-					<a href="">
-						<b>See more</b><img src="<?php echo get_bloginfo("template_directory"); ?>/asset/img/link-d.png">
-					</a>
+					<b>See more</b><img src="<?php echo get_bloginfo("template_directory"); ?>/asset/img/link-d.png">
 				</div>
 			</div>
 

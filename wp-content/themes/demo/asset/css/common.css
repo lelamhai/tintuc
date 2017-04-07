@@ -126,14 +126,18 @@ ul,ol{
    margin-top: 20px;
 }
 
-.see-more a b{
+.see-more {
+   cursor: pointer;
+}
+
+.see-more > b{
    font-size: 14px;
    font-weight: 400;
    color: #a71a27;
    padding-right: 10px;
 }
 
-.see-more a img {
+.see-more > img {
   width: 15px;
   height: auto;
 } 
@@ -142,3 +146,12 @@ ul,ol{
    color: #a71a27;
    padding: 25px 0;
 } 
+
+.footer-wrap-follow-text,
+.footer-wrap-icon {
+  padding-bottom: 7px;
+}
+
+#category {
+  display: none;
+}

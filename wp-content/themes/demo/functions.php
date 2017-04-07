@@ -185,37 +185,49 @@ add_action('after_setup_theme', 'jinn_imagesize');
 add_action('wp_ajax_load_posts_by_ajax', 'load_posts_by_ajax_callback');
 add_action('wp_ajax_nopriv_load_posts_by_ajax', 'load_posts_by_ajax_callback');
 function load_posts_by_ajax_callback() {
-    check_ajax_referer('load_more_posts', 'security');
+    check_ajax_referer('load_more_posts_policy', 'security');
+
     $paged = $_POST['page'];
+    $category = $_POST['category'];
     $args = array(
-        'category_name' => 'news',
+        'category_name' => $category,
         'post_type' => 'post',
         'post_status' => 'publish',
         'posts_per_page' => '2',
         'paged' => $paged,
-    );
+        );
     $my_posts = new WP_Query( $args );
     if ( $my_posts->have_posts() ) :
         ?>
-        <?php while ( $my_posts->have_posts() ) : $my_posts->the_post() ?>
-            <?php 
-                $image = wp_get_attachment_image_src( get_post_thumbnail_id( $post->ID ), 'thumbnail' );  
-              ?>
-             <div class="item">
-                  <div class="thumbnail">
-                    <a href="<?php the_permalink(); ?>">
-                      <div style="background-image: url(<?php echo $image[0]; ?>)" class="img"></div>
-                    </a>
-                  </div>
-                  <div class="summary">
-                    <h3 class="title"><a href="<?php the_permalink(); ?>"><?php the_title();?></a></h3>
-                    <div class="entry news-item"><a href="<?php the_permalink(); ?>"><?php echo get_field( "description", $post->ID );?></a></div>
-                  </div>
+    <?php while ( $my_posts->have_posts() ) : $my_posts->the_post() ?>
+        <?php 
+        $image = wp_get_attachment_image_src( get_post_thumbnail_id( $post->ID ), 'thumbnail' );  
+        ?>
+        <div class="box-wrap">
+            <div class="row">
+                <div class="col-md-3 col-sm-3 col-xs-12">
+                  <div class="wrap-item-img">
+                    <a href="<?php the_permalink(); ?>"><?php the_post_thumbnail('img-item'); ?></a>
                 </div>
-        <?php endwhile ?>
+            </div>
+            <div class="col-md-9 col-sm-9 col-xs-12">
+              <div class="wrap-item-text">
+                <a href="<?php the_permalink(); ?>">
+                  <h4 class="title-item">
+                    <?php the_title();?>
+                </h4>
+                <div class="content-item">
+                    <?php echo get_field( "description", $post->ID );?>
+                </div>
+            </a>
+        </div>
+    </div>
+</div>
+</div>
+<?php endwhile ?>
 
-        <?php
-    endif;
- 
-    wp_die();
+<?php
+endif;
+
+wp_die();
 }

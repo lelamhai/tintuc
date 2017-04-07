@@ -1,10 +1,6 @@
 
-
 <!doctype html>
-<!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7" lang=""> <![endif]-->
-<!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8" lang=""> <![endif]-->
-<!--[if IE 8]>         <html class="no-js lt-ie9" lang=""> <![endif]-->
-<!--[if gt IE 8]><!--> <html class="no-js" lang=""> <!--<![endif]-->
+<html class="no-js" lang="">
 <head>
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
@@ -18,8 +14,10 @@
   <link rel="stylesheet" href="<?php echo get_bloginfo("template_directory"); ?>/asset/css/news.css">
   <link rel="stylesheet" href="<?php echo get_bloginfo("template_directory"); ?>/asset/css/news-list.css">
   <link rel="stylesheet" href="<?php echo get_bloginfo("template_directory"); ?>/asset/css/news-detail.css">
+  <link rel="stylesheet" href="<?php echo get_bloginfo("template_directory"); ?>/asset/css/jinn-icons.css">
   <link rel="stylesheet" type="text/css" href="<?php echo get_bloginfo("template_directory"); ?>/asset/css/slider/slick.css">
   <link rel="stylesheet" type="text/css" href="<?php echo get_bloginfo("template_directory"); ?>/asset/css/slider/slick-theme.css">
+ 
 </head>
 
 <body>

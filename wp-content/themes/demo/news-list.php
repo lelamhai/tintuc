@@ -4,6 +4,8 @@
  */
 ?>
 <?php get_header(); ?>
+<div id="category">news</div>
+
 <section class="bg-white">
 	<div class="container">
 		<div class="row">
@@ -83,9 +85,7 @@
 		<div class="row">
 			<div class="col-md-12">
 				<div class="see-more">
-					<a href="">
-						<b>See more</b><img src="<?php echo get_bloginfo("template_directory"); ?>/asset/img/link-d.png">
-					</a>
+					<b>See more</b><img src="<?php echo get_bloginfo("template_directory"); ?>/asset/img/link-d.png">
 				</div>
 			</div>
 
@@ -138,4 +138,23 @@
       	</div> 
 	</div>
 </section>
+
+<!-- <script type="text/javascript">
+  var ajaxurl = "<?php echo admin_url( 'admin-ajax.php' ); ?>";
+  var page = 2;
+  jQuery(function($) {
+    $('body').on('click', '.see-more', function() {
+      var data = {
+        'action': 'load_posts_by_ajax',
+        'page': page,
+        'security': '<?php echo wp_create_nonce("load_more_posts_news"); ?>'
+      };
+
+      $.post(ajaxurl, data, function(response) {
+        $('.wrap-item').append(response);
+        page++;
+      });
+    });
+  });
+</script> -->
 <?php get_footer(); ?>

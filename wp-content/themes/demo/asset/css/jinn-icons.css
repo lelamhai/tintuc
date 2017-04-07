@@ -1,0 +1,217 @@
+.line-icon {
+    padding: 1px 0 0 20px;
+    font-weight: 400;
+    color: #0e0e0e;
+    font-size: 14px;
+}
+
+.line-icon .icon {
+    width: 15px;
+    height: 15px;
+
+}
+
+.jinn-icon {
+    background-image: url('../img/thy.png');
+    background-size: 142px 145px;
+    background-repeat: no-repeat;
+    display: block;
+    width: 15px;
+    height: 15px;
+}
+
+.jinn-zoom-black {
+    background-position: -109px -111px;
+
+}
+
+.jinn-soth-black {
+    background-position: -126px -111px
+}
+
+.jinn-city-view {
+    background-position: -91px -36px;
+}
+
+.jinn-view-black {
+    background-position: -53px -55px;
+}
+
+
+.jinn-no-ic-white {
+    background-position: -18px -109px;
+}
+
+.jinn-no-ic-black {
+    background-position: 0 -109px;
+}
+
+/*icon address color white*/
+.jinn-address-white {
+    background-position: 0 0;
+}
+
+/*icon address color black*/
+.jinn-address-black {
+    background-position: -18px 0;
+}
+
+.jinn-overview-black {
+    background-position: -54px 0;
+}
+
+/*icon price color black*/
+.jinn-price-black {
+    background-position: -37px 0;
+}
+
+/*icon furniture color black*/
+.jinn-furniture-black {
+    background-position: -18px -18px;
+}
+
+/*icon plan color black*/
+.jinn-plan-black {
+    background-position: -109px -18px;
+}
+
+/*icon building color black*/
+.jinn-building-black {
+    background-position: -54px -18px;
+}
+
+.jinn-orientation-black {
+    background-position: -92px -54px;
+}
+
+.jinn-orientation-white {
+    background-position: -56px -36px;
+}
+
+.jinn-view-white {
+    background-position: -109px -54px;
+}
+
+.jinn-ha-black {
+    background-position: -127px 0px;
+}
+
+.jinn-ha-black {
+    background-position: -127px 0px;
+}
+
+.jinn-ha-white {
+    background-position: -127px -71px;
+
+}
+
+.jinn-tree-black {
+    background-position: -18px -54px;
+}
+
+.jinn-tree-white {
+    background-position: -127px -88px;
+
+}
+
+.jinn-pen-house-black {
+    background-position: -109px 0px;
+}
+
+.jinn-pen-house-white {
+    background-position: 0px -54px;
+}
+
+
+.jinn-apartment-black {
+    background-position: -36px -18px;
+}
+
+.jinn-apartment-white {
+    background-position: -90px -72px;
+}
+
+
+.jinn-mail-black {
+    background-position: -36px -36px;
+}
+
+.jinn-bathroom-black {
+    background-position: -73px -36px;
+}
+
+.jinn-size-black {
+    background-position: 0 -72px;
+}
+
+.jinn-size-white {
+    background-position: -127px -53px;
+}
+
+.jinn-locked-white {
+    background-position: -18px -72px;
+}
+
+.jinn-bedroom-white {
+    background-position: -108px -73px;
+}
+
+.jinn-facebook-white {
+    background-position: -91px 0px;
+}
+
+.jinn-google-white {
+    background-position: -91px -18px;
+}
+
+.jinn-twiter-white {
+    background-position: -91px -18px;
+}
+
+.jinn-bedroom-black {
+    background-position: -73px -73px;
+}
+
+.jinn-favorite-black {
+    background-position: -54px -73px;
+}
+
+
+
+.jinn-floor-black {
+    background-position: -108px -90px;
+}
+
+.jinn-bathroom-white {
+    background-position: -36px -108px;
+}
+
+/*icon building color black*/
+.jinn-gmail-white {
+    background-position: -91px -18px;
+}
+
+.jinn-plan-black.active {
+    background-position: -91px -109px;
+}
+
+.jinn-building-black.active {
+    background-position: -73px -18px;
+}
+
+.jinn-overview-black.active {
+    background-position: 0px -18px;
+}
+
+
+.jinn-favorite-black.active {
+    background-position: -36px -73px;
+}
+
+.jinn-building-black.active {
+    background-position: -73px -18px;
+}
+
+.jinn-soth-black.active {
+    background-position: 0px -128px;
+}

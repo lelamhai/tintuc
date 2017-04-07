@@ -4,8 +4,7 @@
  */
 ?>
 <?php get_header(); ?>
-
-    <div class="entry-content">
+<div class="entry-content">
     <?php 
     $args = array(
         'category_name' => 'news',
@@ -17,38 +16,30 @@
     $my_posts = new WP_Query( $args );
     if ( $my_posts->have_posts() ) : 
     ?>
-        <div class="my-posts">
+        <div class="box-wrap">
             <?php while ( $my_posts->have_posts() ) : $my_posts->the_post() ?>
-              <?php 
-                var_dump($image = wp_get_attachment_image_src( get_post_thumbnail_id( $post->ID ), 'thumbnail' ));  
-              ?>
-
-              <div style="background-image: url(<?php echo $image[0]; ?>)" class="img">sdfasdfsfda</div>
-                <?php the_post_thumbnail(); ?>
-                <h2><?php the_title() ?></h2>
-                <?php the_excerpt() ?>
+              <div class="row">
+                <div class="col-md-3 col-sm-3 col-xs-12">
+                  <div class="wrap-item-img">
+                    <a href="<?php the_permalink(); ?>"><?php the_post_thumbnail('img-item'); ?></a>
+                  </div>
+                </div>
+                <div class="col-md-9 col-sm-9 col-xs-12">
+                  <div class="wrap-item-text">
+                    <a href="<?php the_permalink(); ?>">
+                      <h4 class="title-item">
+                        <?php the_title();?>
+                      </h4>
+                      <div class="content-item">
+                        <?php echo get_field( "description", $post->ID );?>
+                      </div>
+                    </a>
+                  </div>
+                </div>
+              </div>
             <?php endwhile ?>
         </div>
     <?php endif ?>
-    <div class="loadmore">Load More...</div>
+    <div class="see-more">Load More...</div>
 </div>
-        
-<!-- <script type="text/javascript">
-  var ajaxurl = "<?php echo admin_url( 'admin-ajax.php' ); ?>";
-  var page = 2;
-  jQuery(function($) {
-    $('body').on('click', '.loadmore', function() {
-      var data = {
-        'action': 'load_posts_by_ajax',
-        'page': page,
-        'security': '<?php echo wp_create_nonce("load_more_posts"); ?>'
-      };
-
-      $.post(ajaxurl, data, function(response) {
-        $('.my-posts').append(response);
-        page++;
-      });
-    });
-  });
-</script> -->
 <?php get_footer(); ?>  
