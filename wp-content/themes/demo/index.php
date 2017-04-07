@@ -56,7 +56,7 @@
                         <div class="col-md-6 col-sm-6 col-xs-12">
                             <div class="wrap-big-text">
                                 <a href="<?php the_permalink(); ?>">
-                                    <h4 class="title-item">
+                                    <h4 class="title-big-item">
                                         <?php the_title();?>
                                     </h4>
                                     <div class="content-item">

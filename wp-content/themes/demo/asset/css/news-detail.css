@@ -93,7 +93,7 @@
 
 .esta-button {
 	background-color: #a71a27;
-	padding:4px 15px;
+	padding: 4px 15px;
 	position: relative;
 	overflow: hidden;
 }
@@ -119,6 +119,15 @@
   background-image: none;
   border: 1px solid transparent;
   border-radius: 4px;
+}
+
+
+.esta-button:hover {
+	background-color: #fff;
+	color: #a71a27 !important;
+	border: 1px solid #a71a27;
+	padding-top: 3px;
+	padding-bottom: 3px;
 }
 
 .btn:focus,

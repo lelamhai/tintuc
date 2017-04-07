@@ -66,7 +66,7 @@
 				</div>
 			</div>
 		</div>
-		<div class="row">
+	 	<div class="row">
 			<div class="col-md-8 col-sm-8 col-xs-12">
 				<div class="wrap-detail-post-left">
 					<div class="title-detail-post">
@@ -106,7 +106,7 @@
 							?>
 						</ul>
 						<div class="see-more-popular">
-							<div class="bottom text-center"><a class="btn esta-button">Xem thêm</a></div>
+							<div class="bottom text-center"><a href="http://tintuc.local/news-list/" class="btn esta-button">Xem thêm</a></div>
 						</div>
 					</div>
 				</div>
