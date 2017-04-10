@@ -1,3 +1,7 @@
+$('#excerpt-long b').text(function(_, txt) {
+  return txt.length > 17 ? txt.substr(0, 17) + "..." : txt;
+});
+
 $('.autoplay').slick({
 	/*Sceen Desktop and Landscape Tablet*/
   	slidesToShow: 4,

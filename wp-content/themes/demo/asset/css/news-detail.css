@@ -98,6 +98,10 @@
 	overflow: hidden;
 }
 
+.text-conent {
+  width: 100%
+}
+
 /*==============================*/
 .btn {
   display: inline-block;

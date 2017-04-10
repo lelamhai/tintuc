@@ -10,139 +10,132 @@
      
    </i> 
   </span> -->
-    <!-- <section class="slider-vertical bg-silver">
-      <div class="container">
-       <div class="row">
-        <div class="col-md-12">
-          <h3 class="title-category">HOT NEWS</h3>
-        </div>
-      </div>
-      <div class="row">
-        <div class="col-md-8 col-sm-8 col-xs-8">
-          <div class="wrap-list-post-news">
-            <img stt="0" src="<?php echo get_bloginfo("template_directory"); ?>/asset/img/banner/1.png"> 
-            <img stt="1" src="<?php echo get_bloginfo("template_directory"); ?>/asset/img/banner/1.png" style = "display:none"> 
-            <img stt="2" src="<?php echo get_bloginfo("template_directory"); ?>/asset/img/banner/1.png" style = "display:none"> 
-            <img stt="3"src="<?php echo get_bloginfo("template_directory"); ?>/asset/img/banner/1.png" style = "display:none"> 
-            <img stt="4" src="<?php echo get_bloginfo("template_directory"); ?>/asset/img/banner/1.png" style = "display:none"> 
-          </div>
-        </div>
-        <div class="col-md-4 col-sm-4 col-xs-4">
-          <ul class="title-list-post-news">
-            <li><a href="">1</a></li>
-            <li><a href="">2</a></li>
-            <li><a href="">3</a></li>
-            <li><a href="">4</a></li>
-            <li><a href="">5</a></li>
-          </ul>
-        </div>
+
+<!--   <div  class="wrap">
+    <div><a href="">1</a></div>
+    <div><a href="">1</a></div>
+    <div><a href="">1</a></div>
+  </div> -->
+
+  <section class="bg-silver">
+   <div class="container">
+     <div class="row">
+      <div class="col-md-12">
+        <h3 class="title-category">HOT NEWS</h3>
       </div>
     </div>
-    </section> -->
-    <section>
-     <div class="container">
-       <div class="row">
-        <div class="col-md-12">
-          <h3 class="title-category">HOT NEWS</h3>
-        </div>
-      </div>
-      <div class="row">
-        <div class="col-sm-8">
-          <div class="slider">
-            <div id="home-slider" class="carousel slide" data-ride="carousel" data-interval="false">
-              <!-- Wrapper for slides -->
-              <div class="carousel-inner" role="listbox">
+    <div class="row">
+    <div class="col-md-8 col-sm-12 col-xs-12 wrap-hot-news-left" >
+        <div class="slider">
+          <div id="home-slider" class="carousel slide" data-ride="carousel" data-interval="false"> <!-- data-interval="false": slider not autoplay -->
+            <div class="carousel-inner" role="listbox">
+              <?php
+              $flag = 1;
+              $posts_per_page = 5;
+              $args = array(
+                'category_name' => 'news',                                         
+                'posts_per_page' => $posts_per_page,
+                'paged' => ( get_query_var('paged') ? get_query_var('paged') : 1)
+                );
+              query_posts($args);
 
-                <?php
-                $posts_per_page = 5;
-                $args = array(
-                  'category_name' => 'news',                                         
-                  'posts_per_page' => $posts_per_page,
-                  'paged' => ( get_query_var('paged') ? get_query_var('paged') : 1)
-                  );
-                query_posts($args);
+              if(have_posts()) : 
+                while (have_posts()) :
+                  the_post();
+                ?>
+                <?php 
+                if(get_field( "news_hot", $post->ID ))
+                {
+                  if($flag == 1)
+                    { ?>
+                   
+                       <div class="item active">
+                        <?php the_post_thumbnail('img-so-big'); ?>
+                        <div class="carousel-caption left-title-hot-news">
+                            <h3><?php the_title();?></h3>
+                        </div>
+                      </div>
+                      <?php } else { ?>
+                        <div class="item">
+                          <?php the_post_thumbnail('img-so-big'); ?>
+                          <div class="carousel-caption left-title-hot-news">
+                            <h3><?php the_title();?></h3>
+                         </div>
+                       </div>
+                     <?php 
+                   }
+                   $flag ++;
+                 }
+                 ?>
+                 <?php 
+                 endwhile; endif;
+                 ?>
+                 <?php
+                 wp_reset_query();
+                 ?> 
+               </div> 
+             </div>
+           </div>
+         </div>
+         <div class="col-md-4 col-sm-12 col-xs-12 wrap-hot-news-right">
+          <div class="slider-list wrap-title-hot-news">
+            <?php
+            $data = 0;
+            $active = 0;
+            $posts_per_page = 5;
+            $args = array(
+              'category_name' => 'news',                                         
+              'posts_per_page' => $posts_per_page,
+              'paged' => ( get_query_var('paged') ? get_query_var('paged') : 1)
+              );
+            query_posts($args);
 
-                if(have_posts()) : 
-                  while (have_posts()) :
-                    the_post();
-                  ?>
-                  <?php 
-                  $image = wp_get_attachment_image_src( get_post_thumbnail_id( $post->ID ), 'Large' ); 
-                  ?>
-                  <?php if(get_field( "news_hot", $post->ID ))
+            if(have_posts()) : 
+              while (have_posts()) :
+                the_post();
+              ?>
+              <?php 
+              if(get_field( "news_hot", $post->ID ))
+                { 
+                  if($active == 0)
                   {?>
-                  <!--  <div class="title"><span class="text"><a href="<?php the_permalink(); ?>"><?php the_title();?></a></span></div> -->
-                  
-
-                  <div class="item">
-                    <div class="thumbnail">
-                      <a href="<?php the_permalink(); ?>">
-                        <div style="background-image: url(<?php echo $image[0]; ?>)" class="img"></div>
+                    <div class="item-title-hot-news active">
+                      <a href="#" data-target="#home-slider" data-slide-to="<?php echo $data; ?>" >
+                        <?php the_title();?>
                       </a>
                     </div>
-                    <div class="caption">
-                      <div class="title"><?php the_title();?></div>
+                    
+                    <?php $data ++;
+                    $active ++;
+                  }
+                  else { ?>
+                    <div class="item-title-hot-news">
+                      <a href="#" data-target="#home-slider" data-slide-to="<?php echo $data; ?>" >
+                        <?php the_title();?>
+                      </a>
                     </div>
-                  </div>
-                  <?php } ?>
+                   <?php $data ++;
+                    $active ++;
+                  }
                   
-                  <?php 
-                  endwhile; endif;
-                  ?>
-                  <?php
-                  wp_reset_query();
-                  ?>
-
-
-                
-                <div class="item active">
-                  <img class="img-responsive"  src="img/img1.jpg" alt="...">
-                  <div class="carousel-caption">
-                    <h4></h4>
-                  </div>
-                </div>
-                <div class="item">
-                  <img class="img-responsive" src="img/img2.jpg" alt="...">
-                  <div class="carousel-caption">
-                    <h4></h4>
-                  </div>
-                </div>
-                <div class="item">
-                  <img src="img/img3.jpg" alt="...">
-                  <div class="carousel-caption">
-                    <h4></h4>
-                  </div>
-                </div>
-                <div class="item">
-                  <img src="img/img4.jpg" alt="...">
-                  <div class="carousel-caption">
-                    <h4></h4>
-                  </div>
-                </div>
+                }
+                ?>
+                <?php 
+                endwhile; endif;
+                ?>
+                <?php
+                wp_reset_query();
+                ?> 
               </div>
             </div>
           </div>
         </div>
-        <div class="col-sm-4">
-          <div class="slider-list">
-            <a href="#" data-target="#home-slider" data-slide-to="0">
-              <p>1</p>
-            </a>
-            <a href="#" data-target="#home-slider" data-slide-to="1">
-              <p>2</p>
-            </a>
+      </section>
 
-            <a href="#" data-target="#home-slider" data-slide-to="2">
-              <p>3</p>
-            </a>
-            <a href="#" data-target="#home-slider" data-slide-to="3">
-              <p>4</p>
-            </a>
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
+
+
+
+    
 
     <section class="bg-white">
     	<div class="container">

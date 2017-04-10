@@ -130,6 +130,7 @@ ul,ol{
    cursor: pointer;
 }
 
+.see-more a b,
 .see-more > b{
    font-size: 14px;
    font-weight: 400;
