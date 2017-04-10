@@ -26,7 +26,8 @@
 								<?php 
 								echo wp_list_pluck( $categories, 'name' )[0];
 								?>
-							</a><span class="symbol">&gt;</span> 
+							</a>
+							<!-- <span class="symbol">&gt;</span>  -->
 							<?php 
 							break;
 
@@ -39,7 +40,7 @@
 								echo wp_list_pluck( $categories, 'name' )[0];
 								?>
 							</a>
-							<span class="symbol">&gt;</span> 
+							<!-- <span class="symbol">&gt;</span>  -->
 							<?php 
 							break;
 
@@ -52,7 +53,7 @@
 								echo wp_list_pluck( $categories, 'name' )[0];
 								?>
 							</a>
-							<span class="symbol">&gt;</span> 
+							<!-- <span class="symbol">&gt;</span>  -->
 							<?php 
 							break;
 						
@@ -62,7 +63,7 @@
 					}
 				}
 				?>
-					<a href="" class="current"><?php the_title();?> </a>
+					<!-- <a href="" class="current"><?php the_title();?> </a> -->
 				</div>
 			</div>
 		</div>

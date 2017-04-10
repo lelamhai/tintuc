@@ -66,18 +66,15 @@
               <span class="icon-bar"></span>
               <span class="icon-bar"></span>
             </button>
-            <a class="navbar-brand" href="/"><img class="img-responsive" src="<?php echo get_bloginfo("template_directory"); ?>/asset/img/logo.png" alt="Jinn logo" /></a>
+            <a class="navbar-brand" href="http://tintuc.local/news/"><img class="img-responsive" src="<?php echo get_bloginfo("template_directory"); ?>/asset/img/logo.png" alt="Jinn logo" /></a>
           </div>
           <div id="navbar" class="main-menu navbar-collapse collapse no-margin-left no-margin-right">
             <ul class="nav navbar-nav navbar-right top-menu no-margin-right no-margin-left">
-              <li><a href="/projects" class=""> Dự án</a></li>
-
-              <li><a href="/houses/for-sale" class=""> Cần Bán</a></li>
-
-              <li><a href="/houses/for-rent" class=""> Cho thuê</a></li>
-
-              <li><a href="/contact" class=""> Liên hệ</a></li>
-
+              <li><a href="#" class=""> Dự án</a></li>
+              <li><a href="#" class=""> Cần Bán</a></li>
+              <li><a href="#" class=""> Cho thuê</a></li>
+              <li><a href="http://tintuc.local/news/" class="active">Tin tức</a></li>
+              <li><a href="#" class=""> Liên hệ</a></li>
             </ul>
           </div><!--/.nav-collapse -->
         </div><!--/.container-fluid -->

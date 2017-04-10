@@ -136,6 +136,12 @@ ul,ol{
    font-weight: 400;
    color: #a71a27;
    padding-right: 10px;
+   float: left;
+}
+
+.see-more a i,
+.see-more > i{
+   float: right;
 }
 
 .see-more > img {
@@ -143,6 +149,14 @@ ul,ol{
   height: auto;
 } 
 
+.see-more-color{
+  color: #a71a27;
+  line-height: 23px;
+}
+
+.see-more-color:hover{
+  color: #a71a27;
+} 
 .title-category {
    color: #a71a27;
    padding: 25px 0;
@@ -155,4 +169,13 @@ ul,ol{
 
 #category {
   display: none;
+}
+
+.content-detail-post img {
+  width: 100%;
+  height: auto;
+}
+
+#navbar ul li .active {
+  color: #a71a27;
 }

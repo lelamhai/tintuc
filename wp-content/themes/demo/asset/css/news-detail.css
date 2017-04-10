@@ -14,7 +14,6 @@
 
 .wrap-category-path > a {
 	color: #000;
-	text-transform: uppercase;
 }
 
 .current {
@@ -100,6 +99,10 @@
 
 .text-conent {
   width: 100%
+}
+
+.content-detail-post > img {
+  width: 100% !important;
 }
 
 /*==============================*/

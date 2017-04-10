@@ -40,7 +40,7 @@
 									<?php the_title();?>
 								</h4>
 								<div class="content-item">
-									<?php echo get_field( "description", $post->ID );?>
+									<?php echo get_field( "policy_news", $post->ID );?>
 								</div>
 							</a>
 						</div>
@@ -89,7 +89,7 @@
 											<?php the_title();?>
 										</h4>
 										<div class="content-item">
-											<?php echo get_field( "description", $post->ID );?>
+											<?php echo get_field( "policy_news", $post->ID );?>
 										</div>
 									</a>
 								</div>
@@ -110,7 +110,8 @@
 		<div class="row">
 			<div class="col-md-12">
 				<div class="see-more">
-						<b>See more</b><img src="<?php echo get_bloginfo("template_directory"); ?>/asset/img/link-d.png">
+						<b>See more</b>
+                         <span ><i class="glyphicon glyphicon-chevron-down see-more-color"></i> </span>
 				</div>
 			</div>
 

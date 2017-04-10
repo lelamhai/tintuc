@@ -11,12 +11,6 @@
    </i> 
   </span> -->
 
-<!--   <div  class="wrap">
-    <div><a href="">1</a></div>
-    <div><a href="">1</a></div>
-    <div><a href="">1</a></div>
-  </div> -->
-
   <section class="bg-silver">
    <div class="container">
      <div class="row">
@@ -51,16 +45,20 @@
                    
                        <div class="item active">
                         <?php the_post_thumbnail('img-so-big'); ?>
-                        <div class="carousel-caption left-title-hot-news">
-                            <h3><?php the_title();?></h3>
-                        </div>
+                        <a href="<?php the_permalink(); ?>">
+                          <div class="carousel-caption left-title-hot-news">
+                              <h3><?php the_title();?></h3>
+                          </div>
+                        </a>
                       </div>
                       <?php } else { ?>
                         <div class="item">
                           <?php the_post_thumbnail('img-so-big'); ?>
-                          <div class="carousel-caption left-title-hot-news">
-                            <h3><?php the_title();?></h3>
-                         </div>
+                          <a href="<?php the_permalink(); ?>">
+                            <div class="carousel-caption left-title-hot-news">
+                              <h3><?php the_title();?></h3>
+                           </div>
+                         </a>
                        </div>
                      <?php 
                    }
@@ -100,7 +98,7 @@
                   if($active == 0)
                   {?>
                     <div class="item-title-hot-news active">
-                      <a href="#" data-target="#home-slider" data-slide-to="<?php echo $data; ?>" >
+                      <a href="<?php the_permalink(); ?>" data-target="#home-slider" data-slide-to="<?php echo $data; ?>" >
                         <?php the_title();?>
                       </a>
                     </div>
@@ -110,7 +108,7 @@
                   }
                   else { ?>
                     <div class="item-title-hot-news">
-                      <a href="#" data-target="#home-slider" data-slide-to="<?php echo $data; ?>" >
+                      <a href="<?php the_permalink(); ?>" data-target="#home-slider" data-slide-to="<?php echo $data; ?>" >
                         <?php the_title();?>
                       </a>
                     </div>
@@ -132,10 +130,6 @@
         </div>
       </section>
 
-
-
-
-    
 
     <section class="bg-white">
     	<div class="container">
@@ -177,7 +171,7 @@
     		<div class="wrap-item">
                     <?php
                     $flag = 1; 
-                    $popularpost = new WP_Query( array( 'posts_per_page' => 6, 'meta_key' => 'wpb_post_views_count', 'orderby' => 'meta_value_num', 'order' => 'DESC'  ) );
+                    $popularpost = new WP_Query( array('category_name' => 'news', 'posts_per_page' => 6, 'meta_key' => 'wpb_post_views_count', 'orderby' => 'meta_value_num', 'order' => 'DESC'  ) );
                     while ( $popularpost->have_posts() ) : $popularpost->the_post();
                     ?>
 
@@ -217,7 +211,8 @@
                 <div class="col-md-12">
                     <div class="see-more">
                         <a href="http://tintuc.local/news-list/">
-                            <b>See more</b><img src="<?php echo get_bloginfo("template_directory"); ?>/asset/img/link-d.png">
+                            <b>See more</b>
+                            <span ><i class="glyphicon glyphicon-chevron-down see-more-color"></i> </span>
                         </a>
                     </div>
                 </div>
@@ -318,7 +313,8 @@
               <div class="col-md-12">
                 <div class="see-more">
                     <a href="http://tintuc.local/real-estate-market-list/">
-                        <b>See more</b><img src="<?php echo get_bloginfo("template_directory"); ?>/asset/img/link-d.png">
+                        <b>See more</b>
+                        <span ><i class="glyphicon glyphicon-chevron-down see-more-color"></i> </span> 
                     </a>
                 </div>
               </div>
@@ -417,7 +413,8 @@
         <div class="col-md-12">
           <div class="see-more">
             <a href="http://tintuc.local/policy-news-list/">
-              <b>See more</b><img src="<?php echo get_bloginfo("template_directory"); ?>/asset/img/link-d.png">
+              <b>See more</b>
+              <span ><i class="glyphicon glyphicon-chevron-down see-more-color"></i> </span>
             </a>
           </div>
         </div>
