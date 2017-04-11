@@ -40,6 +40,7 @@
   <script src="<?php echo get_bloginfo("template_directory"); ?>/asset/js/slider/slider-footer.js"></script>
   <script src="<?php echo get_bloginfo("template_directory"); ?>/asset/js/slider_top.js"></script>
   <script src="<?php echo get_bloginfo("template_directory"); ?>/asset/js/main.js"></script>
+  <script src="<?php echo get_bloginfo("template_directory"); ?>/asset/js/news.js"></script>
   <script type="text/javascript">
   var ajaxurl = "<?php echo admin_url( 'admin-ajax.php' ); ?>";
   var page = 2;
