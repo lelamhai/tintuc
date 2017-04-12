@@ -3,17 +3,6 @@
 ** Phone: 0969128313
 */
 
-/*.wrap {
-	height: 180px;
-	background-color: red;
-}
-
-
-.wrap div {
-	height: 60px;
-}
-*/
-/*DEMO*/
 .wrap-hot-news-left {
 	padding: 0 0 0 15px;
 }
@@ -32,6 +21,7 @@
 	height: 76px;
 	border-bottom: 1px solid #b33642;
 	padding: 15px;
+	cursor: pointer;
 }
 
 .item-title-hot-news a {
@@ -127,7 +117,7 @@
 	text-overflow: ellipsis;
 	display: -webkit-box;
 	max-height: 100%;
-	-webkit-line-clamp: 10;
+	-webkit-line-clamp: 14;
 	-webkit-box-orient: vertical;
 }
 
@@ -137,7 +127,7 @@
 	text-overflow: ellipsis;
 	display: -webkit-box;
 	max-height: 100%;
-	-webkit-line-clamp: 3;
+	-webkit-line-clamp: 5;
 	-webkit-box-orient: vertical;
 }
 
@@ -180,7 +170,7 @@
 	text-overflow: ellipsis;
 	display: -webkit-box;
 	max-height: 100%;
-	-webkit-line-clamp: 6;
+	-webkit-line-clamp: 4;
 	-webkit-box-orient: vertical;
 }
 

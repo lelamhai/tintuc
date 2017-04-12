@@ -200,30 +200,93 @@ function load_posts_by_ajax_callback() {
     if ( $my_posts->have_posts() ) :
         ?>
     <?php while ( $my_posts->have_posts() ) : $my_posts->the_post() ?>
+        
         <?php 
-        $image = wp_get_attachment_image_src( get_post_thumbnail_id( $post->ID ), 'thumbnail' );  
-        ?>
-        <div class="box-wrap">
+            switch ($category) {
+                case 'news': 
+                    ?>
+
+                    <div class="box-wrap">
+                        <div class="row">
+                            <div class="col-md-3 col-sm-3 col-xs-12">
+                              <div class="wrap-item-img">
+                                <a href="<?php the_permalink(); ?>"><?php the_post_thumbnail('img-item'); ?></a>
+                            </div>
+                        </div>
+                        <div class="col-md-9 col-sm-9 col-xs-12">
+                            <div class="wrap-item-text">
+                                <a href="<?php the_permalink(); ?>">
+                                  <h4 class="title-item">
+                                    <?php the_title();?>
+                                </h4>
+                                <div class="content-item">
+                                    <?php echo get_field( "description", $post->ID );?>
+                                </div>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+                    <?php
+                    break;
+                case 'real-estate-market':
+                ?>
+                    <div class="box-wrap">
+                        <div class="row">
+                            <div class="col-md-3 col-sm-3 col-xs-12">
+                              <div class="wrap-item-img">
+                                <a href="<?php the_permalink(); ?>"><?php the_post_thumbnail('img-item'); ?></a>
+                            </div>
+                        </div>
+                        <div class="col-md-9 col-sm-9 col-xs-12">
+                            <div class="wrap-item-text">
+                                <a href="<?php the_permalink(); ?>">
+                                  <h4 class="title-item">
+                                    <?php the_title();?>
+                                </h4>
+                                <div class="content-item">
+                                    <?php echo get_field( "real_estate_market", $post->ID );?>
+                                </div>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+                <?php
+                    # code...
+                    break;
+                case 'policy-news': 
+                ?>
+                    <div class="box-wrap">
             <div class="row">
                 <div class="col-md-3 col-sm-3 col-xs-12">
                   <div class="wrap-item-img">
                     <a href="<?php the_permalink(); ?>"><?php the_post_thumbnail('img-item'); ?></a>
                 </div>
-            </div>
-            <div class="col-md-9 col-sm-9 col-xs-12">
-              <div class="wrap-item-text">
-                <a href="<?php the_permalink(); ?>">
-                  <h4 class="title-item">
-                    <?php the_title();?>
-                </h4>
-                <div class="content-item">
-                    <?php echo get_field( "description", $post->ID );?>
                 </div>
-            </a>
+                <div class="col-md-9 col-sm-9 col-xs-12">
+                    <div class="wrap-item-text">
+                        <a href="<?php the_permalink(); ?>">
+                          <h4 class="title-item">
+                            <?php the_title();?>
+                        </h4>
+                        <div class="content-item">
+                            <?php echo get_field( "policy_news", $post->ID );?>
+                        </div>
+                        </a>
+                    </div>
+                </div>
+            </div>
         </div>
-    </div>
-</div>
-</div>
+                <?php
+                    # code...
+                    break;
+                
+                default:
+                    # code...
+                    break;
+            }
+        ?>
 <?php endwhile ?>
 
 <?php

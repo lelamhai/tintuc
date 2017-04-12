@@ -107,7 +107,7 @@
 							?>
 						</ul>
 						<div class="see-more-popular">
-							<div class="bottom text-center"><a href="http://tintuc.local/news-list/" class="btn esta-button">Xem thêm</a></div>
+							<div class="bottom text-center"><a href="<?php echo site_url(); ?>/news-list/" class="btn esta-button">Xem thêm</a></div>
 						</div>
 					</div>
 				</div>

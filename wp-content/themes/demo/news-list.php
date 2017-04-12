@@ -85,10 +85,8 @@
     		<div class="row">
                 <div class="col-md-12">
                     <div class="see-more">
-                        <a href="http://tintuc.local/news-list/">
                             <b>See more</b>
                             <span ><i class="glyphicon glyphicon-chevron-down see-more-color"></i> </span>
-                        </a>
                     </div>
                 </div>
                 

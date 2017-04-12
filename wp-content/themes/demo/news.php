@@ -24,8 +24,8 @@
           <div id="home-slider" class="carousel slide" data-ride="carousel"> <!-- data-interval="false": slider not autoplay -->
             <div class="carousel-inner" role="listbox">
               <?php
-              $flag = 1;
-              $posts_per_page = 5;
+              $check_page_img = 1;
+              $check_active_img = 1;
               $args = array(
                 'category_name' => 'news',                                         
                 'posts_per_page' => $posts_per_page,
@@ -40,29 +40,35 @@
                 <?php 
                 if(get_field( "news_hot", $post->ID ))
                 {
-                  if($flag == 1)
-                    { ?>
                    
-                       <div class="item active">
-                        <?php the_post_thumbnail('img-so-big'); ?>
-                        <a href="<?php the_permalink(); ?>">
-                          <div class="carousel-caption left-title-hot-news">
+                    if($check_page_img == 6)
+                    {
+                      break;
+                    }else
+                    {
+                      if($check_active_img == 1)
+                      {?>
+                        <div class="item active">
+                          <?php the_post_thumbnail('img-so-big'); ?>
+                          <a href="<?php the_permalink(); ?>">
+                            <div class="carousel-caption left-title-hot-news">
                               <h3><?php the_title();?></h3>
-                          </div>
-                        </a>
-                      </div>
+                            </div>
+                          </a>
+                        </div>
                       <?php } else { ?>
                         <div class="item">
                           <?php the_post_thumbnail('img-so-big'); ?>
                           <a href="<?php the_permalink(); ?>">
                             <div class="carousel-caption left-title-hot-news">
                               <h3><?php the_title();?></h3>
-                           </div>
-                         </a>
-                       </div>
-                     <?php 
-                   }
-                   $flag ++;
+                            </div>
+                          </a>
+                        </div>
+                      <?php }
+                      $check_active_img ++;
+                    }
+                    $check_page_img ++;
                  }
                  ?>
                  <?php 
@@ -78,9 +84,9 @@
          <div class="col-md-4 col-sm-12 col-xs-12 wrap-hot-news-right">
           <div id="test" class="slider-list wrap-title-hot-news">
             <?php
-            $data = 0;
-            $active = 0;
-            $posts_per_page = 5;
+            $data_slide_to = 0;
+            $check_page_title = 1;
+            $check_active_title = 1;
             $args = array(
               'category_name' => 'news',                                         
               'posts_per_page' => $posts_per_page,
@@ -95,27 +101,28 @@
               <?php 
               if(get_field( "news_hot", $post->ID ))
                 { 
-                  if($active == 0)
-                  {?>
-                    <div class="item-title-hot-news active">
-                      <a href="<?php the_permalink(); ?>" data-target="#home-slider" data-slide-to="<?php echo $data; ?>" >
-                        <?php the_title();?>
-                      </a>
-                    </div>
-                    
-                    <?php $data ++;
-                    $active ++;
+                  if($check_page_title == 6)
+                  {
+                    break;
+                  }else{
+                    if($check_active_title == 1)
+                    { ?>
+                        <div class="item-title-hot-news active" data-target="#home-slider" data-slide-to="<?php echo $data_slide_to; ?>">
+                          <a href="<?php the_permalink(); ?>" >
+                            <?php the_title();?>
+                          </a>
+                        </div>
+                    <?php } else { ?>
+                        <div class="item-title-hot-news" data-target="#home-slider" data-slide-to="<?php echo $data_slide_to; ?>" >
+                          <a href="<?php the_permalink(); ?>"  >
+                            <?php the_title();?>
+                          </a>
+                        </div>
+                    <?php } 
+                    $data_slide_to ++;
+                    $check_active_title ++;
                   }
-                  else { ?>
-                    <div class="item-title-hot-news">
-                      <a href="<?php the_permalink(); ?>" data-target="#home-slider" data-slide-to="<?php echo $data; ?>" >
-                        <?php the_title();?>
-                      </a>
-                    </div>
-                   <?php $data ++;
-                    $active ++;
-                  }
-                  
+                  $check_page_title ++;
                 }
                 ?>
                 <?php 
@@ -347,8 +354,10 @@
         <div class="row">
           <div class="col-md-12">
             <div class="see-more">
+              <a href="<?php echo site_url(); ?>/news-list/">
               <b>See more</b>
-              <span ><i class="glyphicon glyphicon-chevron-down see-more-color"></i> </span>
+                <span ><i class="glyphicon glyphicon-chevron-down see-more-color"></i> </span>
+              </a>
             </div>
           </div>
 
@@ -447,7 +456,7 @@
             <div class="row">
               <div class="col-md-12">
                 <div class="see-more">
-                    <a href="http://tintuc.local/real-estate-market-list/">
+                    <a href="<?php echo site_url(); ?>/real-estate-market-list/">
                         <b>See more</b>
                         <span ><i class="glyphicon glyphicon-chevron-down see-more-color"></i> </span> 
                     </a>
@@ -547,7 +556,7 @@
       <div class="row">
         <div class="col-md-12">
           <div class="see-more">
-            <a href="http://tintuc.local/policy-news-list/">
+            <a href="<?php echo site_url(); ?>/policy-news-list/">
               <b>See more</b>
               <span ><i class="glyphicon glyphicon-chevron-down see-more-color"></i> </span>
             </a>

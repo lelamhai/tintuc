@@ -23,25 +23,4 @@ $( document ).ready(function() {
 				document.getElementsByTagName('head')[0].appendChild(styleElement);
 			}
 	}
-
-/*	var getWidth = parseInt(window.screen.availWidth);
-	{
-		if(getWidth >= 992 && getWidth < 1024)
-		{
-			var height = 71;
-			var cssText = '.item-title-hot-news{ height:' + height + 'px !important; }';
-			writeStyles('styles_js', cssText)
-
-			function writeStyles(styleName, cssText) {
-				var styleElement = document.getElementById(styleName);
-				if (styleElement) document.getElementsByTagName('head')[0].removeChild(
-					styleElement);
-					styleElement = document.createElement('style');
-				styleElement.type = 'text/css';
-				styleElement.id = styleName;
-				styleElement.innerHTML = cssText;
-				document.getElementsByTagName('head')[0].appendChild(styleElement);
-			}
-		} 
-	}*/
 });
