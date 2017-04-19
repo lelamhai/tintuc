@@ -43,7 +43,7 @@
   <script src="<?php echo get_bloginfo("template_directory"); ?>/asset/js/news.js"></script>
   <script type="text/javascript">
   var ajaxurl = "<?php echo admin_url( 'admin-ajax.php' ); ?>";
-  var page = 2;
+  var page = 4;
   jQuery(function($) {
     $('body').on('click', '.see-more', function() {
       var category = document.getElementById('category').innerHTML;
@@ -53,7 +53,7 @@
         'category' : category,
         'security': '<?php echo wp_create_nonce("load_more_posts_policy"); ?>'
       };
-
+      
       $.post(ajaxurl, data, function(response) {
         $('.wrap-item').append(response);
         page++;

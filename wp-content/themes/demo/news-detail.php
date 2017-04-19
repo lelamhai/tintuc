@@ -22,7 +22,7 @@
 					switch ($temp) {
 						case 'news':
 							?>
-							<a href="http://tintuc.local/news-list/">
+							<a href="<?php echo site_url(); ?>/news-list/">
 								<?php 
 								echo wp_list_pluck( $categories, 'name' )[0];
 								?>
@@ -33,9 +33,9 @@
 
 						case 'real-estate-market':
 							?>
-							<a href="http://tintuc.local/news/">News</a>
+							<a href="<?php echo site_url(); ?>/news/">News</a>
 							<span class="symbol">></span>
-							<a href="http://tintuc.local/real-estate-market-list/">
+							<a href="<?php echo site_url(); ?>/real-estate-market-list/">
 								<?php 
 								echo wp_list_pluck( $categories, 'name' )[0];
 								?>
@@ -46,9 +46,9 @@
 
 						case 'policy-news':
 							?>
-							<a href="http://tintuc.local/news/">News</a>
+							<a href="<?php echo site_url(); ?>/news/">News</a>
 							<span class="symbol">></span>
-							<a href="http://tintuc.local/policy-news-list/">
+							<a href="<?php echo site_url(); ?>/policy-news-list/">
 								<?php 
 								echo wp_list_pluck( $categories, 'name' )[0];
 								?>
@@ -71,7 +71,7 @@
 			<div class="col-md-8 col-sm-8 col-xs-12">
 				<div class="wrap-detail-post-left">
 					<div class="title-detail-post">
-						<h4 class="title-item"><?php the_title();?></h4>
+						<h4 class="title-detail"><?php the_title();?></h4>
 					</div>
 					<div class="time-detail-post">
 						<?php echo get_the_date('d-m-Y'); ?>

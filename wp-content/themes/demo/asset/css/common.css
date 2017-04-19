@@ -126,7 +126,7 @@ ul,ol{
 
 .see-more {
    float: right;
-   padding-right: 15px;
+   /*padding-right: 15px;*/
    margin-top: 20px;
 }
 

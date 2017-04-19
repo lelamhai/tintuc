@@ -110,7 +110,7 @@
 		<div class="row">
 			<div class="col-md-12">
 				<div class="see-more">
-						<b>See more</b>
+						<b>Xem thêm</b>
                          <span ><i class="glyphicon glyphicon-chevron-down see-more-color"></i> </span>
 				</div>
 			</div>

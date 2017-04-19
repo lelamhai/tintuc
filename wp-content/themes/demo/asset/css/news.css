@@ -1,8 +1,11 @@
-/*
+﻿/*
 ** Author: Lê Lam Hải
 ** Phone: 0969128313
 */
 
+.carousel-control {
+	display: none ;
+}
 .wrap-hot-news-left {
 	padding: 0 0 0 15px;
 }
