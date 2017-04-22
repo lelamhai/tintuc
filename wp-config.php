@@ -20,6 +20,10 @@
 
 // ** MySQL settings - You can get this info from your web host ** //
 /** The name of the database for WordPress */
+
+
+define( 'SAVEQUERIES', true );
+
 define('DB_NAME', 'tintuc');
 
 /** MySQL database username */

@@ -49,7 +49,7 @@
 .left-title-hot-news {
 	right: 140px;
 	left: 0;
-	padding: 0 15px 20px 15px;
+	padding: 15px 15px;
 	text-align: initial;
 	background: rgba(0, 0, 0, 0.6);
     position: absolute;
@@ -58,13 +58,16 @@
     height: 100px;
 }
 
-.left-title-hot-news h3 {
+.left-title-hot-news b {
 	overflow: hidden;
 	text-overflow: ellipsis;
 	display: -webkit-box;
 	max-height: 100%;
 	-webkit-line-clamp: 2;
 	-webkit-box-orient: vertical;
+	font-size: 24px;
+	font-weight: 500;
+    line-height: normal;
 }
 
 .box-wrap,

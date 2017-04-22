@@ -54,6 +54,42 @@
 	</div><!-- .site-inner -->
 </div><!-- .site -->
 
+
+
+
+
+
+
 <?php wp_footer(); ?>
+
+<!-- <?php
+           
+		$argsHotNews = array(
+			'category_name' => 'news',
+			/*'posts_per_page' => 30,*/
+			/*'meta_key' => 'news_hot'*/
+			);
+		$query_hot_news = new WP_Query($argsHotNews);
+		if($query_hot_news->have_posts()) : 
+			while ($query_hot_news->have_posts()) :
+				$query_hot_news-> the_post();
+			?>
+
+
+
+			<div class="item active">
+				<a href="<?php the_permalink(); ?>">
+					<div class="carousel-caption left-title-hot-news">
+						<b><?php the_title();?></b>
+					</div>
+				</a>
+			</div>
+
+
+
+
+			<?php 
+			endwhile; endif;
+			?> -->
 </body>
 </html>
