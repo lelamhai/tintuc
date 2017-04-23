@@ -7,19 +7,25 @@
 <?php 
 	wpb_set_post_views(get_the_ID());
 ?>
-<?php 
-	$categories = get_the_category();
-?>
+<!-- <?php echo get_category_parents( 2, false , ' ' ); ?> -->
 <section class="wrap-detail-post">
+
 	<div class="container">
 		<div class="row">
 			<div class="col-md-12 col-sm-12 col-xs-12">
 				<div class="wrap-category-path">
-					<?php 
-				foreach (wp_list_pluck( $categories, 'slug' ) as $key => $value) {
-					$temp = wp_list_pluck( $categories, 'slug' )[0];
-
-					switch ($temp) {
+					<?php
+					$Parent = 0;
+					$Category = "";
+					$Term_id = 0;
+					$categories = get_the_category();
+					$Category = wp_list_pluck( $categories, 'slug' )[0];
+					/*check parent 0 or other 0*/
+					/*$Parent = wp_list_pluck( $categories, 'parent' )[0];
+					$Term_id = wp_list_pluck( $categories, 'term_id' )[0];*/
+					//var_dump($categories);
+				
+					switch ($Category) {
 						case 'news':
 							?>
 							<a href="<?php echo site_url(); ?>/news-list/">
@@ -27,7 +33,6 @@
 								echo wp_list_pluck( $categories, 'name' )[0];
 								?>
 							</a>
-							<!-- <span class="symbol">&gt;</span>  -->
 							<?php 
 							break;
 
@@ -61,13 +66,14 @@
 							# code...
 							break;
 					}
-				}
+					
+				
 				?>
 					<!-- <a href="" class="current"><?php the_title();?> </a> -->
 				</div>
 			</div>
 		</div>
-	 	<div class="row">
+		<div class="row">
 			<div class="col-md-8 col-sm-8 col-xs-12">
 				<div class="wrap-detail-post-left">
 					<div class="title-detail-post">
@@ -89,8 +95,15 @@
 					<div class="list-popular-news-wrap">
 						<ul class="wrap-list-popular">
 							<?php 
-							$popularpost = new WP_Query( array( 'posts_per_page' => 3, 'meta_key' => 'wpb_post_views_count', 'orderby' => 'meta_value_num', 'order' => 'DESC'  ) );
-							while ( $popularpost->have_posts() ) : $popularpost->the_post();
+							$arrayPopular = array(
+								'meta_key' => 'wpb_post_views_count',
+								'orderby' => 'meta_value_num', 
+								'order' => 'DESC', 
+								'posts_per_page' => 3
+								);
+							$my_posts = new WP_Query( $arrayPopular );
+
+							while ( $my_posts->have_posts() ) : $my_posts->the_post();
 							?>
 							<li>
 								<a href="<?php the_permalink(); ?>">

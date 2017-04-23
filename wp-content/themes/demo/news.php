@@ -7,6 +7,7 @@
 <!-- <a href="<?php echo site_url()."/p?".intval(215)?>">link</a> -->
 
 <?php ?>
+
 <section class="bg-silver">
  <div class="container">
    <div class="row">
@@ -21,8 +22,7 @@
           <div class="carousel-inner" role="listbox">
             <?php
             $arrayTitle = array();
-            $flag_title = 0;
-            $check_img = 1;
+            $check_img = 0;
             $argsHotNews = array(
               'category_name' => 'news',
               'meta_key' => 'news_hot',
@@ -37,12 +37,11 @@
               <?php 
                       /*if(get_field( "news_hot", $post->ID ))
                       {*/
-                        if($check_img == 6)
+                        if($check_img == 5)
                         {
                           break;
-                        }else
-                        {
-                          if($check_img == 1)
+                        } else {
+                          if($check_img == 0)
                           {
                             ?>
                             <div class="item active">
@@ -54,7 +53,7 @@
                               </a>
                             </div>
                             <?php 
-                            $arrayTitle[$flag_title] = get_the_title();
+                            $arrayTitle[$check_img] = get_the_title();
                           } else { ?>
                           <div class="item">
                             <?php the_post_thumbnail('img-so-big'); ?>
@@ -65,9 +64,8 @@
                             </a>
                           </div>
                           <?php 
-                          $arrayTitle[$flag_title] = get_the_title();
+                          $arrayTitle[$check_img] = get_the_title();
                         }
-                        $flag_title ++;
                       }
                       $check_img ++;
                       /*}*/
@@ -133,14 +131,13 @@
               'order' => 'DESC'
               );
             $query_news = new WP_Query($arrayNews);
+
             if($query_news->have_posts())
             {
               while ($query_news->have_posts()) {
                 $query_news-> the_post();
                 $categories = get_the_category();
-                foreach (wp_list_pluck( $categories, 'slug' ) as $key => $value) {
-                  $CategoryName = wp_list_pluck( $categories, 'slug' )[0];
-                }
+                $CategoryName = wp_list_pluck( $categories, 'slug' )[0];
                   if($check_first)
                   { ?>
                       <div class="wrap-big-item">
@@ -220,10 +217,13 @@
                           </div>
                         </div>
                       </div>
-                  <?php }
+                  <?php 
+                }
               }
             }
         ?>
+
+
           <div class="row">
             <div class="col-md-12">
               <div class="see-more">
@@ -350,8 +350,7 @@
                 $posts_per_page = 2;
                 $args = array(
                   'category_name' => 'policy-news', 
-                  'posts_per_page' =>  $posts_per_page,                                       
-                  'paged' => ( get_query_var('paged') ? get_query_var('paged') : 1)
+                  'posts_per_page' =>  $posts_per_page                                       
                   );
                 query_posts($args);
 
@@ -395,8 +394,7 @@
                      $posts_per_page = 7;
                      $args = array(
                       'category_name' => 'policy-news',                                         
-                      'posts_per_page' => $posts_per_page,
-                      'paged' => ( get_query_var('paged') ? get_query_var('paged') : 1)
+                      'posts_per_page' => $posts_per_page
                       );
                      query_posts($args);
 

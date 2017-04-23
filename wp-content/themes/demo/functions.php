@@ -91,7 +91,7 @@ function wpb_get_post_views($postID){
         add_post_meta($postID, $count_key, '0');
         return "0 View";
     }
-    return $count/2;
+    return $count;
 }
 
 /**
@@ -123,230 +123,121 @@ function load_posts_by_ajax_callback() {
     $paged = $_POST['page'];
     $category = $_POST['category'];
     if($category == 'news')
-    {
-
-        $args = array(
-        'meta_key' => 'wpb_post_views_count',
-        'orderby' => 'meta_value_num', 
-        'order' => 'DESC', 
-        'posts_per_page' => '2',
-        'paged' => $paged,
-        );
-        $my_posts = new WP_Query( $args );
-        if ( $my_posts->have_posts() ) :
-            ?>
-        <?php while ( $my_posts->have_posts() ) : $my_posts->the_post() ?>
-
-            <?php 
-            $categories = get_the_category();
-            foreach (wp_list_pluck( $categories, 'slug' ) as $key => $value) {
-                $temp = wp_list_pluck( $categories, 'slug' )[0];
-                switch ($temp) {
-                    case 'news':         
-                    ?>
-
+    {   
+        $CategoryName = "";
+        $arrayPopular = array(
+            'meta_key' => 'wpb_post_views_count',
+            'orderby' => 'meta_value_num', 
+            'order' => 'DESC', 
+            'posts_per_page' => 2,
+            'paged' => $paged
+            );
+        $my_posts = new WP_Query( $arrayPopular );
+         if($my_posts->have_posts())
+        {
+            while ($my_posts->have_posts()) {
+                $my_posts-> the_post();
+                $categories = get_the_category();
+                $CategoryName = wp_list_pluck( $categories, 'slug' )[0];
+                ?>
                     <div class="box-wrap">
                         <div class="row">
                             <div class="col-md-3 col-sm-3 col-xs-12">
-                              <div class="wrap-item-img">
-                                <a href="<?php the_permalink(); ?>"><?php the_post_thumbnail('img-item'); ?></a>
-                            </div>
-                        </div>
-                        <div class="col-md-9 col-sm-9 col-xs-12">
-                            <div class="wrap-item-text">
-                                <a href="<?php the_permalink(); ?>">
-                                  <h4 class="title-item">
-                                    <?php the_title();?>
-                                </h4>
-                                <div class="content-item">
-                                    <?php echo get_field( "description", $post->ID );?>
+                                <div class="wrap-item-img">
+                                    <a href="<?php the_permalink(); ?>"><?php the_post_thumbnail('img-item'); ?></a>
                                 </div>
-                            </a>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <?php
-            break;
-            case 'real-estate-market': 
-            ?>
-            <div class="box-wrap">
-                <div class="row">
-                    <div class="col-md-3 col-sm-3 col-xs-12">
-                      <div class="wrap-item-img">
-                        <a href="<?php the_permalink(); ?>"><?php the_post_thumbnail('img-item'); ?></a>
-                    </div>
-                </div>
-                <div class="col-md-9 col-sm-9 col-xs-12">
-                    <div class="wrap-item-text">
-                        <a href="<?php the_permalink(); ?>">
-                          <h4 class="title-item">
-                            <?php the_title();?>
-                        </h4>
-                        <div class="content-item">
-                            <?php echo get_field( "real_estate_market", $post->ID );?>
-                        </div>
-                    </a>
-                </div>
-            </div>
-        </div>
-    </div>
-    <?php
-                    # code...
-    break;
-    case 'policy-news': 
-    ?>
-    <div class="box-wrap">
-        <div class="row">
-            <div class="col-md-3 col-sm-3 col-xs-12">
-              <div class="wrap-item-img">
-                <a href="<?php the_permalink(); ?>"><?php the_post_thumbnail('img-item'); ?></a>
-            </div>
-        </div>
-        <div class="col-md-9 col-sm-9 col-xs-12">
-            <div class="wrap-item-text">
-                <a href="<?php the_permalink(); ?>">
-                  <h4 class="title-item">
-                    <?php the_title();?>
-                </h4>
-                <div class="content-item">
-                    <?php echo get_field( "policy_news", $post->ID );?>
-                </div>
-            </a>
-        </div>
-    </div>
-</div>
-</div>
-<?php
-                    # code...
-break;
-
-default:
-                    # code...
-break;
-}
-}
-?>
-<?php endwhile ?>
-
-<?php
-endif;
-
-wp_die();
-
-
-
-
-}
-else {
-    $args = array(
-        'category_name' => $category,
-        'post_type' => 'post',
-        'post_status' => 'publish',
-        'posts_per_page' => '2',
-        'paged' => $paged,
-        );
-    $my_posts = new WP_Query( $args );
-    if ( $my_posts->have_posts() ) :
-        ?>
-    <?php while ( $my_posts->have_posts() ) : $my_posts->the_post() ?>
-
-        <?php 
-        $categories = get_the_category();
-        foreach (wp_list_pluck( $categories, 'slug' ) as $key => $value) {
-            $temp = wp_list_pluck( $categories, 'slug' )[0];
-            switch ($temp) {
-                case 'news':         
-                ?>
-
-                <div class="box-wrap">
-                    <div class="row">
-                        <div class="col-md-3 col-sm-3 col-xs-12">
-                          <div class="wrap-item-img">
-                            <a href="<?php the_permalink(); ?>"><?php the_post_thumbnail('img-item'); ?></a>
-                        </div>
-                    </div>
-                    <div class="col-md-9 col-sm-9 col-xs-12">
-                        <div class="wrap-item-text">
-                            <a href="<?php the_permalink(); ?>">
-                              <h4 class="title-item">
-                                <?php the_title();?>
-                            </h4>
-                            <div class="content-item">
-                                <?php echo get_field( "description", $post->ID );?>
                             </div>
-                        </a>
+                            <div class="col-md-9 col-sm-9 col-xs-12">
+                                <div class="wrap-item-text">
+                                  <a href="<?php the_permalink(); ?>">
+                                    <h4 class="title-item">
+                                      <?php the_title();?>
+                                    </h4>
+                                    <div class="content-item">
+                                          <?php 
+                                          switch ($CategoryName) {
+                                            case 'news':
+                                              echo get_field( "description", $post->ID );
+                                              break;
+
+                                            case 'real-estate-market':
+                                              echo get_field( "real_estate_market", $post->ID );
+                                              break;
+
+                                            case 'policy-news':
+                                              echo get_field( "policy_news", $post->ID );
+                                              break;
+
+                                            default:
+                                              break;
+                                          }
+                                          ?>
+                                    </div>
+                                  </a>
+                                </div>
+                            </div>
+                        </div>
                     </div>
-                </div>
-            </div>
-        </div>
-        <?php
-        break;
-        case 'real-estate-market': 
-        ?>
-        <div class="box-wrap">
-            <div class="row">
-                <div class="col-md-3 col-sm-3 col-xs-12">
-                  <div class="wrap-item-img">
-                    <a href="<?php the_permalink(); ?>"><?php the_post_thumbnail('img-item'); ?></a>
-                </div>
-            </div>
-            <div class="col-md-9 col-sm-9 col-xs-12">
-                <div class="wrap-item-text">
-                    <a href="<?php the_permalink(); ?>">
-                      <h4 class="title-item">
-                        <?php the_title();?>
-                    </h4>
-                    <div class="content-item">
-                        <?php echo get_field( "real_estate_market", $post->ID );?>
+                <?php
+            }
+        }
+        wp_die();
+    } else {
+        $CategoryName = "";
+        $arrayCommonCategory = array(
+            'category_name' => $category,
+            'posts_per_page' => 2,
+            'paged' => $paged
+            );
+
+        $my_posts = new WP_Query( $arrayCommonCategory );
+        if($my_posts->have_posts())
+        { 
+             while ($my_posts->have_posts()) {
+                $my_posts-> the_post();
+                $categories = get_the_category();
+                $CategoryName = wp_list_pluck( $categories, 'slug' )[0];
+                    ?>
+                    <div class="box-wrap">
+                        <div class="row">
+                            <div class="col-md-3 col-sm-3 col-xs-12">
+                                <div class="wrap-item-img">
+                                    <a href="<?php the_permalink(); ?>"><?php the_post_thumbnail('img-item'); ?></a>
+                                </div>
+                            </div>
+                            <div class="col-md-9 col-sm-9 col-xs-12">
+                                <div class="wrap-item-text">
+                                  <a href="<?php the_permalink(); ?>">
+                                    <h4 class="title-item">
+                                      <?php the_title();?>
+                                    </h4>
+                                    <div class="content-item">
+                                          <?php 
+                                          switch ($CategoryName) {
+                                            case 'real-estate-market':
+                                              echo get_field( "real_estate_market", $post->ID );
+                                              break;
+
+                                            case 'policy-news':
+                                              echo get_field( "policy_news", $post->ID );
+                                              break;
+
+                                            default:
+                                              break;
+                                          }
+                                          ?>
+                                    </div>
+                                  </a>
+                                </div>
+                            </div>
+                        </div>
                     </div>
-                </a>
-            </div>
-        </div>
-    </div>
-</div>
-<?php
-                    # code...
-break;
-case 'policy-news': 
-?>
-<div class="box-wrap">
-    <div class="row">
-        <div class="col-md-3 col-sm-3 col-xs-12">
-          <div class="wrap-item-img">
-            <a href="<?php the_permalink(); ?>"><?php the_post_thumbnail('img-item'); ?></a>
-        </div>
-    </div>
-    <div class="col-md-9 col-sm-9 col-xs-12">
-        <div class="wrap-item-text">
-            <a href="<?php the_permalink(); ?>">
-              <h4 class="title-item">
-                <?php the_title();?>
-            </h4>
-            <div class="content-item">
-                <?php echo get_field( "policy_news", $post->ID );?>
-            </div>
-        </a>
-    </div>
-</div>
-</div>
-</div>
-<?php
-                    # code...
-break;
+                <?php
 
-default:
-                    # code...
-break;
-}
-}
-?>
-<?php endwhile ?>
-
-<?php
-endif;
-
-wp_die();
-}
+                }
+               
+        }
+        wp_die();
+    }
 
 }

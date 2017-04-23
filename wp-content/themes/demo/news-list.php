@@ -13,215 +13,109 @@
                     <h3 class="title-category">POPULAR NEWS</h3>
                 </div>
             </div>
-
-            <div class="wrap-big-item">
-                <?php 
-                $popularpost = new WP_Query( array(  
-                    'posts_per_page' => 1, 
-                    'meta_key' => 'wpb_post_views_count',
-                    'orderby' => 'meta_value_num', 
-                    'order' => 'DESC'  ) );
-                while ( $popularpost->have_posts() ) : $popularpost->the_post();
-                ?>
-                <?php 
-
+            <?php 
+            $check_first = true;
+            $CategoryName = "";
+            $arrayNews = array(
+              'posts_per_page' => 6,
+              'meta_key' => 'wpb_post_views_count',
+              'orderby' => 'meta_value_num',
+              'order' => 'DESC'
+              );
+            $query_news = new WP_Query($arrayNews);
+            if($query_news->have_posts())
+            {
+              while ($query_news->have_posts()) {
+                $query_news-> the_post();
                 $categories = get_the_category();
                 foreach (wp_list_pluck( $categories, 'slug' ) as $key => $value) {
-                    $temp = wp_list_pluck( $categories, 'slug' )[0];
-                    switch ($temp) {
-                        case 'news': 
-                        ?>
-
-                        <div class="row">
-                            <div class="col-md-6 col-sm-6 col-xs-12">
-                                <div class="wrap-big-img">
-                                    <a href="<?php the_permalink(); ?>"><?php the_post_thumbnail('img-big'); ?></a>
-                                </div>
-                            </div>
-                            <div class="col-md-6 col-sm-6 col-xs-12">
-                                <div class="wrap-big-text">
-                                    <a href="<?php the_permalink(); ?>">
-                                        <h4 class="title-big-item">
-                                            <?php the_title();?>
-                                        </h4>
-                                        <div class="content-item">
-                                            <?php echo get_field( "description", $post->ID );?>
-                                        </div>
-                                    </a>
-                                </div>
-                            </div>
-                        </div>
-                        <?php
-                        break;
-                        case 'real-estate-market': 
-                        ?>
-                        <div class="row">
-                            <div class="col-md-6 col-sm-6 col-xs-12">
-                                <div class="wrap-big-img">
-                                    <a href="<?php the_permalink(); ?>"><?php the_post_thumbnail('img-big'); ?></a>
-                                </div>
-                            </div>
-                            <div class="col-md-6 col-sm-6 col-xs-12">
-                                <div class="wrap-big-text">
-                                    <a href="<?php the_permalink(); ?>">
-                                        <h4 class="title-big-item">
-                                            <?php the_title();?>
-                                        </h4>
-                                        <div class="content-item">
-                                            <?php echo get_field( "description", $post->ID );?>
-                                        </div>
-                                    </a>
-                                </div>
-                            </div>
-                        </div>
-                        <?php
-                    # code...
-                        break;
-                        case 'policy-news': 
-                        ?>
-                        <div class="row">
-                            <div class="col-md-6 col-sm-6 col-xs-12">
-                                <div class="wrap-big-img">
-                                    <a href="<?php the_permalink(); ?>"><?php the_post_thumbnail('img-big'); ?></a>
-                                </div>
-                            </div>
-                            <div class="col-md-6 col-sm-6 col-xs-12">
-                                <div class="wrap-big-text">
-                                    <a href="<?php the_permalink(); ?>">
-                                        <h4 class="title-big-item">
-                                            <?php the_title();?>
-                                        </h4>
-                                        <div class="content-item">
-                                            <?php echo get_field( "description", $post->ID );?>
-                                        </div>
-                                    </a>
-                                </div>
-                            </div>
-                        </div>
-                        <?php
-                    # code...
-                        break;
-
-                        default:
-                    # code...
-                        break;
-                    }
+                  $CategoryName = wp_list_pluck( $categories, 'slug' )[0];
                 }
-                ?>
-                <?php 
-                endwhile;
-                ?>
-            </div>
-
-    		<div class="wrap-item">
-                    <?php
-                    $flag = 1; 
-                    $popularpost = new WP_Query( array( 'posts_per_page' => 6, 'meta_key' => 'wpb_post_views_count', 'orderby' => 'meta_value_num', 'order' => 'DESC'  ) );
-                    while ( $popularpost->have_posts() ) : $popularpost->the_post();
-                    ?>
-
+                  if($check_first)
+                  { ?>
+                      <div class="wrap-big-item">
+                        <div class="row">
+                          <div class="col-md-6 col-sm-6 col-xs-12">
+                            <div class="wrap-big-img">
+                              <a href="<?php the_permalink(); ?>"><?php the_post_thumbnail('img-big'); ?></a>
+                            </div>
+                          </div>
+                          <div class="col-md-6 col-sm-6 col-xs-12">
+                            <div class="wrap-big-text">
+                              <a href="<?php the_permalink(); ?>">
+                                <h4 class="title-big-item">
+                                  <?php the_title();?>
+                                </h4>
+                                <div class="content-item">
+                                  <?php 
+                                    switch ($CategoryName) {
+                                      case 'news':
+                                          echo get_field( "description", $post->ID );
+                                        break;
+                                      case 'real-estate-market':
+                                          echo get_field( "real_estate_market", $post->ID );
+                                        break;
+                                      case 'policy-news':
+                                          echo get_field( "policy_news", $post->ID );
+                                        break;
+                                      default:
+                                        # code...
+                                        break;
+                                    }
+                                  ?>
+                                </div>
+                              </a>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
                     <?php 
-                    if($flag > 1)
-                    {
-                        ?>
-                        <?php 
-
-        $categories = get_the_category();
-        foreach (wp_list_pluck( $categories, 'slug' ) as $key => $value) {
-            $temp = wp_list_pluck( $categories, 'slug' )[0];
-            switch ($temp) {
-                case 'news': 
-                    ?>
-
-                    <div class="box-wrap">
+                    $check_first = false;
+                  } else { ?>
+                      <div class="box-wrap">
                         <div class="row">
-                            <div class="col-md-3 col-sm-3 col-xs-12">
-                              <div class="wrap-item-img">
-                                <a href="<?php the_permalink(); ?>"><?php the_post_thumbnail('img-item'); ?></a>
+                          <div class="col-md-3 col-sm-3 col-xs-12">
+                            <div class="wrap-item-img">
+                              <a href="<?php the_permalink(); ?>"><?php the_post_thumbnail('img-item'); ?></a>
                             </div>
-                        </div>
-                        <div class="col-md-9 col-sm-9 col-xs-12">
+                          </div>
+                          <div class="col-md-9 col-sm-9 col-xs-12">
                             <div class="wrap-item-text">
-                                <a href="<?php the_permalink(); ?>">
-                                  <h4 class="title-item">
-                                    <?php the_title();?>
+                              <a href="<?php the_permalink(); ?>">
+                                <h4 class="title-item">
+                                  <?php the_title();?>
                                 </h4>
                                 <div class="content-item">
-                                    <?php echo get_field( "description", $post->ID );?>
+                                      <?php 
+                                      switch ($CategoryName) {
+                                        case 'news':
+                                          echo get_field( "description", $post->ID );
+                                          break;
+
+                                        case 'real-estate-market':
+                                          echo get_field( "real_estate_market", $post->ID );
+                                          break;
+
+                                        case 'policy-news':
+                                          echo get_field( "policy_news", $post->ID );
+                                          break;
+
+                                        default:
+                                          break;
+                                      }
+                                      ?>
                                 </div>
-                            </a>
-                        </div>
-                    </div>
-                </div>
-            </div>
-                    <?php
-                    break;
-                case 'real-estate-market': 
-                ?>
-                    <div class="box-wrap">
-                        <div class="row">
-                            <div class="col-md-3 col-sm-3 col-xs-12">
-                              <div class="wrap-item-img">
-                                <a href="<?php the_permalink(); ?>"><?php the_post_thumbnail('img-item'); ?></a>
+                              </a>
                             </div>
+                          </div>
                         </div>
-                        <div class="col-md-9 col-sm-9 col-xs-12">
-                            <div class="wrap-item-text">
-                                <a href="<?php the_permalink(); ?>">
-                                  <h4 class="title-item">
-                                    <?php the_title();?>
-                                </h4>
-                                <div class="content-item">
-                                    <?php echo get_field( "real_estate_market", $post->ID );?>
-                                </div>
-                            </a>
-                        </div>
-                    </div>
-                </div>
-            </div>
-                <?php
-                    # code...
-                    break;
-                case 'policy-news': 
-                ?>
-                    <div class="box-wrap">
-            <div class="row">
-                <div class="col-md-3 col-sm-3 col-xs-12">
-                  <div class="wrap-item-img">
-                    <a href="<?php the_permalink(); ?>"><?php the_post_thumbnail('img-item'); ?></a>
-                </div>
-                </div>
-                <div class="col-md-9 col-sm-9 col-xs-12">
-                    <div class="wrap-item-text">
-                        <a href="<?php the_permalink(); ?>">
-                          <h4 class="title-item">
-                            <?php the_title();?>
-                        </h4>
-                        <div class="content-item">
-                            <?php echo get_field( "policy_news", $post->ID );?>
-                        </div>
-                        </a>
-                    </div>
-                </div>
-            </div>
-        </div>
-                <?php
-                    # code...
-                    break;
-                
-                default:
-                    # code...
-                    break;
+                      </div>
+                  <?php 
                 }
+              }
             }
         ?>
-                        <?php
-                    }
-                    $flag++;
-                    endwhile;
-                    ?>
-            </div>
-
+            <div class="wrap-item"></div>
     		<div class="row">
                 <div class="col-md-12">
                     <div class="see-more">
@@ -243,12 +137,11 @@
     		<div class="row">
     			<div class="slider autoplay">
     				<?php
-    				$IdPost = get_the_ID ();
+    				
     				$posts_per_page = 8;
     				$args = array(
     					'category_name' => 'news',                                         
-    					'posts_per_page' => $posts_per_page,
-    					'paged' => ( get_query_var('paged') ? get_query_var('paged') : 1)
+    					'posts_per_page' => $posts_per_page
     					);
     				query_posts($args);
 
@@ -256,7 +149,6 @@
     					while (have_posts()) :
     						the_post();
     					?>
-    					<?php if($IdPost != get_the_ID ()) {?>
     					<div id="excerpt-long" class="col-md-3">
     						<div class="wrap-img-slider">
     							<a href="<?php the_permalink(); ?>">
@@ -267,7 +159,7 @@
     							</a>
     						</div>
     					</div>
-    					<?php } ?>
+    					
     					<?php 
     					endwhile; endif;
 

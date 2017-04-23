@@ -14,6 +14,10 @@ switch ($category[0]->slug) {
   include 'news-detail.php';
   	# code...
   	break;
+
+  case 'police':
+  include 'news-detail.php';
+
   default:
             # code...
   break;

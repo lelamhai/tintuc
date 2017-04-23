@@ -4,7 +4,7 @@
 <head>
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-  <title><?php echo get_the_title( $ID ); ?></title>
+  <title></title>
   <meta name="description" content="">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link rel="stylesheet" href="<?php echo get_bloginfo("template_directory"); ?>/asset/css/bootstrap.min.css">
@@ -17,7 +17,6 @@
   <link rel="stylesheet" href="<?php echo get_bloginfo("template_directory"); ?>/asset/css/jinn-icons.css">
   <link rel="stylesheet" type="text/css" href="<?php echo get_bloginfo("template_directory"); ?>/asset/css/slider/slick.css">
   <link rel="stylesheet" type="text/css" href="<?php echo get_bloginfo("template_directory"); ?>/asset/css/slider/slick-theme.css">
- 
 </head>
 
 <body>
@@ -73,7 +72,7 @@
               <li><a href="#" class=""> Dự án</a></li>
               <li><a href="#" class=""> Cần Bán</a></li>
               <li><a href="#" class=""> Cho thuê</a></li>
-              <li><a href="http://tintuc.local/news/" class="active">Tin tức</a></li>
+              <li><a href="<?php echo site_url(); ?>/news/" class="active">Tin tức</a></li>
               <li><a href="#" class=""> Liên hệ</a></li>
             </ul>
           </div><!--/.nav-collapse -->
