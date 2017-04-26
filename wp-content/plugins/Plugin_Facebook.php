@@ -1,9 +1,9 @@
 <?php
 /**
-* Plugin Name: Facebook
+* Plugin Name: Demo Messages
 * Plugin URI: http://google.com/
 * Description: plugin Le Lam Hai
-* Version: 1.0
+* Version: 1.5.5
 * Author: Lê Lam Hải
 * Author URI: http://google.com/
 **/
