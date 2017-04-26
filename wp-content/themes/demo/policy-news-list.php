@@ -35,9 +35,9 @@
 	            					<div class="col-md-6 col-sm-6 col-xs-12">
 	            						<div class="wrap-big-text">
 	            							<a href="<?php the_permalink(); ?>">
-	            								<h4 class="title-big-item">
+	            								<p class="title-big-item">
 	            									<?php the_title();?>
-	            								</h4>
+	            								</p>
 	            								<div class="content-item">
 	            									<?php 
 	            										echo get_field( "policy_news", $post->ID );
@@ -61,9 +61,9 @@
 	            					<div class="col-md-9 col-sm-9 col-xs-12">
 		            						<div class="wrap-item-text">
 		            							<a href="<?php the_permalink(); ?>">
-		            								<h4 class="title-item">
+		            								<p class="title-item">
 		            									<?php the_title();?>
-		            								</h4>
+		            								</p>
 		            								<div class="content-item">
 		            									<?php echo get_field( "policy_news", $post->ID );?>
 		            								</div>

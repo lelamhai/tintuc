@@ -138,7 +138,7 @@ function load_posts_by_ajax_callback() {
             while ($my_posts->have_posts()) {
                 $my_posts-> the_post();
                 $categories = get_the_category();
-                $CategoryName = wp_list_pluck( $categories, 'slug' )[0];
+                $CategoryName = $categories[0]->slug;
                 ?>
                     <div class="box-wrap">
                         <div class="row">
@@ -150,9 +150,9 @@ function load_posts_by_ajax_callback() {
                             <div class="col-md-9 col-sm-9 col-xs-12">
                                 <div class="wrap-item-text">
                                   <a href="<?php the_permalink(); ?>">
-                                    <h4 class="title-item">
+                                    <p class="title-item">
                                       <?php the_title();?>
-                                    </h4>
+                                    </p>
                                     <div class="content-item">
                                           <?php 
                                           switch ($CategoryName) {
@@ -196,7 +196,7 @@ function load_posts_by_ajax_callback() {
              while ($my_posts->have_posts()) {
                 $my_posts-> the_post();
                 $categories = get_the_category();
-                $CategoryName = wp_list_pluck( $categories, 'slug' )[0];
+                $CategoryName = $categories[0]->slug;    
                     ?>
                     <div class="box-wrap">
                         <div class="row">
@@ -208,9 +208,9 @@ function load_posts_by_ajax_callback() {
                             <div class="col-md-9 col-sm-9 col-xs-12">
                                 <div class="wrap-item-text">
                                   <a href="<?php the_permalink(); ?>">
-                                    <h4 class="title-item">
+                                    <p class="title-item">
                                       <?php the_title();?>
-                                    </h4>
+                                    </p>
                                     <div class="content-item">
                                           <?php 
                                           switch ($CategoryName) {
@@ -241,3 +241,11 @@ function load_posts_by_ajax_callback() {
     }
 
 }
+
+/*demo plugin*/
+
+function HelloWorld()
+{
+    echo "Hello World<br>";
+}
+add_action("show_text", "HelloWorld");

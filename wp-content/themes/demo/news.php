@@ -73,6 +73,7 @@
 
                       <?php 
                       endwhile; endif;
+                      wp_reset_query();
                       ?>
                       
                     </div> 
@@ -137,7 +138,7 @@
               while ($query_news->have_posts()) {
                 $query_news-> the_post();
                 $categories = get_the_category();
-                $CategoryName = wp_list_pluck( $categories, 'slug' )[0];
+                $CategoryName = $categories[0]->slug;
                   if($check_first)
                   { ?>
                       <div class="wrap-big-item">
@@ -150,9 +151,9 @@
                           <div class="col-md-6 col-sm-6 col-xs-12">
                             <div class="wrap-big-text">
                               <a href="<?php the_permalink(); ?>">
-                                <h4 class="title-big-item">
+                                <p class="title-big-item">
                                   <?php the_title();?>
-                                </h4>
+                                </p>
                                 <div class="content-item">
                                   <?php 
                                     switch ($CategoryName) {
@@ -189,9 +190,9 @@
                           <div class="col-md-9 col-sm-9 col-xs-12">
                             <div class="wrap-item-text">
                               <a href="<?php the_permalink(); ?>">
-                                <h4 class="title-item">
+                                <p class="title-item">
                                   <?php the_title();?>
-                                </h4>
+                                </p>
                                 <div class="content-item">
                                       <?php 
                                       switch ($CategoryName) {
@@ -220,9 +221,9 @@
                   <?php 
                 }
               }
+              wp_reset_query();
             }
         ?>
-
 
           <div class="row">
             <div class="col-md-12">
@@ -250,8 +251,7 @@
                 $posts_per_page = 2;
                 $args = array(
                   'category_name' => 'real-estate-market',                                         
-                  'posts_per_page' => $posts_per_page,
-                  'paged' => ( get_query_var('paged') ? get_query_var('paged') : 1)
+                  'posts_per_page' => $posts_per_page
                   );
                 query_posts($args);
 
@@ -267,9 +267,9 @@
                         <div class="wrap-item-category">
                             <div class="item-title-category">
                                 <a href="<?php the_permalink(); ?>">
-                                    <h4>
+                                    <p>
                                         <?php the_title();?>
-                                    </h4>
+                                    </p>
                                 </a>    
                             </div>
                             <div class="item-content-category">
@@ -295,8 +295,7 @@
                        $posts_per_page = 7;
                        $args = array(
                           'category_name' => 'real-estate-market',                                         
-                          'posts_per_page' => $posts_per_page,
-                          'paged' => ( get_query_var('paged') ? get_query_var('paged') : 1)
+                          'posts_per_page' => $posts_per_page
                           );
                        query_posts($args);
 
@@ -366,9 +365,9 @@
                         <div class="wrap-item-category">
                             <div class="item-title-category">
                                 <a href="<?php the_permalink(); ?>">
-                                    <h4>
+                                    <p>
                                         <?php the_title();?>
-                                    </h4>
+                                    </p>
                                 </a>    
                             </div>
                             <div class="item-content-category">

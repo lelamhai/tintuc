@@ -42,7 +42,7 @@
   <script src="<?php echo get_bloginfo("template_directory"); ?>/asset/js/main.js"></script>
   <script src="<?php echo get_bloginfo("template_directory"); ?>/asset/js/news.js"></script>
   <script type="text/javascript">
-  var ajaxurl = "<?php echo admin_url( 'admin-ajax.php' ); ?>";
+
   var page = 4;
   jQuery(function($) {
     $('body').on('click', '.see-more', function() {
@@ -54,7 +54,7 @@
         'security': '<?php echo wp_create_nonce("load_more_posts_policy"); ?>'
       };
       
-      $.post(ajaxurl, data, function(response) {
+      $.post("<?php echo admin_url( 'admin-ajax.php' ); ?>", data, function(response) {
         $('.wrap-item').append(response);
         page++;
       });

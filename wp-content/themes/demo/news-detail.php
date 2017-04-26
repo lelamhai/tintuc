@@ -15,22 +15,14 @@
 			<div class="col-md-12 col-sm-12 col-xs-12">
 				<div class="wrap-category-path">
 					<?php
-					$Parent = 0;
-					$Category = "";
-					$Term_id = 0;
 					$categories = get_the_category();
-					$Category = wp_list_pluck( $categories, 'slug' )[0];
-					/*check parent 0 or other 0*/
-					/*$Parent = wp_list_pluck( $categories, 'parent' )[0];
-					$Term_id = wp_list_pluck( $categories, 'term_id' )[0];*/
-					//var_dump($categories);
-				
+					$Category = $categories[0]->slug;
 					switch ($Category) {
 						case 'news':
 							?>
 							<a href="<?php echo site_url(); ?>/news-list/">
 								<?php 
-								echo wp_list_pluck( $categories, 'name' )[0];
+								echo $categories[0]->slug;
 								?>
 							</a>
 							<?php 
@@ -42,7 +34,7 @@
 							<span class="symbol">></span>
 							<a href="<?php echo site_url(); ?>/real-estate-market-list/">
 								<?php 
-								echo wp_list_pluck( $categories, 'name' )[0];
+								echo $categories[0]->slug;
 								?>
 							</a>
 							<!-- <span class="symbol">&gt;</span>  -->
@@ -55,7 +47,7 @@
 							<span class="symbol">></span>
 							<a href="<?php echo site_url(); ?>/policy-news-list/">
 								<?php 
-								echo wp_list_pluck( $categories, 'name' )[0];
+								echo $categories[0]->slug;
 								?>
 							</a>
 							<!-- <span class="symbol">&gt;</span>  -->
@@ -95,11 +87,12 @@
 					<div class="list-popular-news-wrap">
 						<ul class="wrap-list-popular">
 							<?php 
+							$posts_per_page = 3;
 							$arrayPopular = array(
 								'meta_key' => 'wpb_post_views_count',
 								'orderby' => 'meta_value_num', 
 								'order' => 'DESC', 
-								'posts_per_page' => 3
+								'posts_per_page' => $posts_per_page
 								);
 							$my_posts = new WP_Query( $arrayPopular );
 
@@ -117,6 +110,7 @@
 							</li>
 							<?php 
 							endwhile;
+							wp_reset_query();
 							?>
 						</ul>
 						<div class="see-more-popular">

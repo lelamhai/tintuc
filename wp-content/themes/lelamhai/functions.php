@@ -174,14 +174,13 @@ function load_posts_by_ajax_callback() {
         'post_type' => 'post',
         'post_status' => 'publish',
         'posts_per_page' => '2',
-        'paged' => $paged,
+        'paged' => $paged
     );
     $my_posts = new WP_Query( $args );
+
     if ( $my_posts->have_posts() ) :
         ?>
         <?php while ( $my_posts->have_posts() ) : $my_posts->the_post() ?>
-            <?php 
-                $image = wp_get_attachment_image_src( get_post_thumbnail_id( $post->ID ), 'thumbnail' );  
               ?>
              <div class="item">
                   <div class="thumbnail">

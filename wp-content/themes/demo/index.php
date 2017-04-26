@@ -1,10 +1,7 @@
-<?php
- /*
-  Template Name: news
- */
-?>
+
 <?php get_header(); ?>
-fdsdfsdffda
+<h1>Trang chủ</h1>
+<!--
 	<span>
    <i class="jinn-icon jinn-soth-black">
      
@@ -326,5 +323,5 @@ fdsdfsdffda
         </div>
       </div>
     </div>
-  </section>
+  </section> -->
 <?php get_footer(); ?>
