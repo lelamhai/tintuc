@@ -4,7 +4,7 @@
  */
 ?>
 <?php get_header(); ?>
-<div id="category">policy-news</div>
+<div id="category">4</div>
 <section class="bg-white">
 	<div class="container">
 		<div class="row">
@@ -14,9 +14,10 @@
 		</div>
 			<?php
 				$check_first = true;
+				$posts_per_page = 6;
 				$arraypolicy = array(
 					'category_name' => 'policy-news',                                         
-					'posts_per_page' => 6,
+					'posts_per_page' => $posts_per_page
 					);
 				$query_policy = new WP_Query($arraypolicy);
 	            if($query_policy->have_posts())
@@ -95,7 +96,7 @@
 	<div class="container">
 		<div class="row">
 			<div class="col-md-12">
-				<h3 class="title-category">OTHER CATEGORIES</h3>
+				<h3 class="title-category">POPULAR POLICY NEWS</h3>
 			</div>
 		</div>
 
@@ -105,8 +106,11 @@
 				
 				$posts_per_page = 8;
 				$args = array(
-					'category_name' => 'policy-news',                                         
+					'category_name' => 'policy-news', 
 					'posts_per_page' => $posts_per_page,
+					'meta_key' => 'wpb_post_views_count',
+					'orderby' => 'meta_value_num',
+					'order' => 'DESC'
 					);
 				query_posts($args);
 

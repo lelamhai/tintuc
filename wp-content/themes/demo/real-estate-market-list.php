@@ -4,7 +4,7 @@
  */
 ?>
 <?php get_header(); ?>
-<div id="category">real-estate-market</div>
+<div id="category">3</div>
 <section class="bg-white">
 	<div class="container">
 		<div class="row">
@@ -14,9 +14,10 @@
 		</div>
 			<?php
 				$check_first = true;
+				$posts_per_page = 6;
 				$arraymarket = array(
 					'category_name' => 'real-estate-market',                                         
-					'posts_per_page' => 6,
+					'posts_per_page' => $posts_per_page
 					);
 				$query_market = new WP_Query($arraymarket);
 	            if($query_market->have_posts())
@@ -96,17 +97,20 @@
 	<div class="container">
 		<div class="row">
 			<div class="col-md-12">
-				<h3 class="title-category">OTHER CATEGORIES</h3>
+				<h3 class="title-category">POPULAR REAL ESTATE MARKET</h3>
 			</div>
 		</div>
 
 		<div class="row">
 			<div class="slider autoplay">
 				<?php
-				$posts_per_page = 8;
+				$posts_per_page = 80;
 				$args = array(
-					'category_name' => 'real-estate-market',                                         
-					'posts_per_page' => $posts_per_page
+					'category_name' => 'real-estate-market',
+					'posts_per_page' => $posts_per_page,
+					'meta_key' => 'wpb_post_views_count',
+					'orderby' => 'meta_value_num',
+					'order' => 'DESC'
 					);
 				query_posts($args);
 

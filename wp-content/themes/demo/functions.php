@@ -122,7 +122,8 @@ function load_posts_by_ajax_callback() {
 
     $paged = $_POST['page'];
     $category = $_POST['category'];
-    if($category == 'news')
+    
+    if($category == 0)
     {   
         $CategoryName = "";
         $arrayPopular = array(
@@ -185,7 +186,7 @@ function load_posts_by_ajax_callback() {
     } else {
         $CategoryName = "";
         $arrayCommonCategory = array(
-            'category_name' => $category,
+            'category__in' => $category,
             'posts_per_page' => 2,
             'paged' => $paged
             );
@@ -214,6 +215,10 @@ function load_posts_by_ajax_callback() {
                                     <div class="content-item">
                                           <?php 
                                           switch ($CategoryName) {
+                                             case 'news':
+                                              echo get_field( "description", $post->ID );
+                                              break;
+
                                             case 'real-estate-market':
                                               echo get_field( "real_estate_market", $post->ID );
                                               break;

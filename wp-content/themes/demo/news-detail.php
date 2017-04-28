@@ -7,22 +7,26 @@
 <?php 
 	wpb_set_post_views(get_the_ID());
 ?>
-<!-- <?php echo get_category_parents( 2, false , ' ' ); ?> -->
+
 <section class="wrap-detail-post">
 
 	<div class="container">
 		<div class="row">
 			<div class="col-md-12 col-sm-12 col-xs-12">
 				<div class="wrap-category-path">
+					<a href="<?php echo site_url(); ?>/news">
+						<span class="glyphicon glyphicon-home"></span>
+					</a>
+					<span class="symbol">:</span>
 					<?php
 					$categories = get_the_category();
 					$Category = $categories[0]->slug;
 					switch ($Category) {
 						case 'news':
 							?>
-							<a href="<?php echo site_url(); ?>/news-list/">
+							<a href="<?php echo site_url(); ?>/news-list/" class="detail-title-category">
 								<?php 
-								echo $categories[0]->slug;
+								echo $categories[0]->name;
 								?>
 							</a>
 							<?php 
@@ -30,11 +34,11 @@
 
 						case 'real-estate-market':
 							?>
-							<a href="<?php echo site_url(); ?>/news/">News</a>
+							<a href="<?php echo site_url(); ?>/news-list/" class="detail-title-category">News</a>
 							<span class="symbol">></span>
-							<a href="<?php echo site_url(); ?>/real-estate-market-list/">
+							<a href="<?php echo site_url(); ?>/real-estate-market-list/" class="detail-title-category">
 								<?php 
-								echo $categories[0]->slug;
+								echo $categories[0]->name;
 								?>
 							</a>
 							<!-- <span class="symbol">&gt;</span>  -->
@@ -43,11 +47,11 @@
 
 						case 'policy-news':
 							?>
-							<a href="<?php echo site_url(); ?>/news/">News</a>
+							<a href="<?php echo site_url(); ?>/news-list/" class="detail-title-category">News</a>
 							<span class="symbol">></span>
-							<a href="<?php echo site_url(); ?>/policy-news-list/">
+							<a href="<?php echo site_url(); ?>/policy-news-list/" class="detail-title-category">
 								<?php 
-								echo $categories[0]->slug;
+								echo $categories[0]->name;
 								?>
 							</a>
 							<!-- <span class="symbol">&gt;</span>  -->

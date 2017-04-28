@@ -90,10 +90,10 @@ function show_facebook()
 	$table_name = $wpdb->prefix . 'options';
 	$query = "SELECT * FROM  {$table_name} WHERE option_name = 'linkfacebook'";
 	$customers = $wpdb->get_results($query);
-	echo $customers;
+	/*echo $customers;
 	printf($customers);
 	print_r($customers);
-
+*/
 	$temp = count($customers)-1;
 	if($temp < 0)
 	{
@@ -117,25 +117,5 @@ function show_facebook()
 	<?php
 }
 add_shortcode("display","show_facebook");
-
-/*register_activation_hook( __FILE__, 'my_plg_install' );
-register_activation_hook( __FILE__, 'my_plg_install_data' );
-global $jal_db_version;
-$my_plg_db_version = '1.0';
-function my_plg_install() {
-    global $wpdb;
-    global $my_plg_db_version;
-    $table_name = $wpdb->prefix . 'my_table';
-    
-    $charset_collate = $wpdb->get_charset_collate();
-    $sql = "CREATE TABLE IF NOT EXISTS $table_name (
-        id mediumint(9) NOT NULL AUTO_INCREMENT,
-        url varchar(55) DEFAULT '' NOT NULL,
-        UNIQUE KEY id (id)
-    ) $charset_collate;";
-    require_once( ABSPATH . 'wp-admin/includes/upgrade.php' );
-    dbDelta( $sql );
-    add_option( 'my_plg_db_version', $my_plg_db_version );
-}*/
 
 ?>

@@ -4,31 +4,27 @@
  */
 ?>
 <?php get_header(); ?>
-<div id="category">news</div>
+<div id="category">2</div>
 
 <section class="bg-white">
     	<div class="container">
     		<div class="row">
                 <div class="col-md-12">
-                    <h3 class="title-category">POPULAR NEWS</h3>
+                    <h3 class="title-category">NEWS</h3>
                 </div>
             </div>
             <?php 
             $check_first = true;
-            $CategoryName = "";
+            $posts_per_page = 6;
             $arrayNews = array(
-              'posts_per_page' => 6,
-              'meta_key' => 'wpb_post_views_count',
-              'orderby' => 'meta_value_num',
-              'order' => 'DESC'
+                'category__in' => 2,                                         
+                'posts_per_page' => $posts_per_page
               );
             $query_news = new WP_Query($arrayNews);
             if($query_news->have_posts())
             {
               while ($query_news->have_posts()) {
                 $query_news-> the_post();
-                $categories = get_the_category();
-                $CategoryName = $categories[0]->slug;
                   if($check_first)
                   { ?>
                       <div class="wrap-big-item">
@@ -45,22 +41,7 @@
                                   <?php the_title();?>
                                 </p>
                                 <div class="content-item">
-                                  <?php 
-                                    switch ($CategoryName) {
-                                      case 'news':
-                                          echo get_field( "description", $post->ID );
-                                        break;
-                                      case 'real-estate-market':
-                                          echo get_field( "real_estate_market", $post->ID );
-                                        break;
-                                      case 'policy-news':
-                                          echo get_field( "policy_news", $post->ID );
-                                        break;
-                                      default:
-                                        # code...
-                                        break;
-                                    }
-                                  ?>
+                                  <?php echo get_field( "description", $post->ID );?>
                                 </div>
                               </a>
                             </div>
@@ -84,24 +65,7 @@
                                   <?php the_title();?>
                                 </p>
                                 <div class="content-item">
-                                      <?php 
-                                      switch ($CategoryName) {
-                                        case 'news':
-                                          echo get_field( "description", $post->ID );
-                                          break;
-
-                                        case 'real-estate-market':
-                                          echo get_field( "real_estate_market", $post->ID );
-                                          break;
-
-                                        case 'policy-news':
-                                          echo get_field( "policy_news", $post->ID );
-                                          break;
-
-                                        default:
-                                          break;
-                                      }
-                                      ?>
+                                      <?php echo get_field( "description", $post->ID ); ?>
                                 </div>
                               </a>
                             </div>
@@ -129,17 +93,20 @@
     	<div class="container">
     		<div class="row">
     			<div class="col-md-12">
-    				<h3 class="title-category">OTHER CATEGORIES</h3>
+    				<h3 class="title-category">POPULAR NEWS</h3>
     			</div>
     		</div>
     		<div class="row">
     			<div class="slider autoplay">
     				<?php
     				
-    				$posts_per_page = 8;
+    				$posts_per_page = 80;
     				$args = array(
-    					'category_name' => 'news',                                         
-    					'posts_per_page' => $posts_per_page
+              'category__in' => 2,
+    					'posts_per_page' => $posts_per_page,
+              'meta_key' => 'wpb_post_views_count',
+              'orderby' => 'meta_value_num',
+              'order' => 'DESC'
     					);
     				query_posts($args);
 

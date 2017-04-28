@@ -6,7 +6,6 @@
 <?php get_header(); ?>
 <!-- <a href="<?php echo site_url()."/p?".intval(215)?>">link</a> -->
 
-<?php ?>
 
 <section class="bg-silver">
  <div class="container">
@@ -125,8 +124,9 @@
         <?php 
             $check_first = true;
             $CategoryName = "";
+            $posts_per_page = 6;
             $arrayNews = array(
-              'posts_per_page' => 6,
+              'posts_per_page' => $posts_per_page,
               'meta_key' => 'wpb_post_views_count',
               'orderby' => 'meta_value_num',
               'order' => 'DESC'
@@ -228,7 +228,7 @@
           <div class="row">
             <div class="col-md-12">
               <div class="see-more">
-                <a href="<?php echo site_url(); ?>/news-list/">
+                <a href="<?php echo site_url(); ?>/popular-list/">
                 <b>Xem thêm</b>
                   <span ><i class="glyphicon glyphicon-chevron-down see-more-color"></i> </span>
                 </a>
@@ -242,6 +242,104 @@
     <section class="bg-silver">
     	<div class="container">
     		<div class="row">
+                <div class="col-md-12 col-sm-12 col-xs-12">
+                    <h3 class="title-category">NEWS</h3>    
+                </div>
+            </div>
+            <div class="row">
+                <?php
+                $posts_per_page = 2;
+                $args = array(
+                  'category__in' => 2,                                         
+                  'posts_per_page' => $posts_per_page
+                  );
+                query_posts($args);
+
+                if(have_posts()) : 
+                  while (have_posts()) :
+                    the_post();
+                ?>
+                <div class="col-md-3 col-sm-3 col-xs-12">
+                    <div class="wrap-category">
+                        <div class="img-category">
+                            <a href="<?php the_permalink(); ?>"><?php the_post_thumbnail('img-item'); ?></a>
+                        </div>
+                        <div class="wrap-item-category">
+                            <div class="item-title-category">
+                                <a href="<?php the_permalink(); ?>">
+                                    <p>
+                                        <?php the_title();?>
+                                    </p>
+                                </a>    
+                            </div>
+                            <div class="item-content-category">
+                                <a href="<?php the_permalink(); ?>">
+                                    <?php echo get_field( "description", $post->ID );?>
+                                </a>    
+                            </div>
+                            
+                        </div>
+                    </div>
+                </div>
+                <?php 
+                endwhile; endif;
+                ?>
+                <?php
+                wp_reset_query();
+                ?>
+
+    			<div class="col-md-6 col-sm-6 col-xs-12">
+    				<ul class="wrap-content-left">
+                       <?php
+                       $flag = 0;
+                       $posts_per_page = 7;
+                       $args = array(
+                          'category__in' => 2,                                         
+                          'posts_per_page' => $posts_per_page
+                          );
+                       query_posts($args);
+
+                       if(have_posts()) : 
+                          while (have_posts()) :
+                            the_post();
+                        ?>
+                        <?php 
+                        if($flag > 1)
+                        {
+                          ?>
+                        <li>
+                          <a href="<?php the_permalink(); ?>"><?php the_title();?></a>
+                        </li>
+                          
+                      <?php
+                  }
+                  $flag ++;
+                  ?>
+                  <?php 
+                  endwhile; endif;
+                  ?>
+                  <?php
+                  wp_reset_query();
+                  ?>
+    				</ul>
+    			</div>
+    			
+    		</div>
+        <div class="row">
+            <div class="col-md-12">
+              <div class="see-more">
+                  <a href="<?php echo site_url(); ?>/news-list/">
+                      <b>Xem thêm</b>
+                      <span ><i class="glyphicon glyphicon-chevron-down see-more-color"></i> </span> 
+                    </a>
+              </div>
+            </div>
+    	 </div>
+    </section>
+
+    <section class="bg-white">
+      <div class="container">
+        <div class="row">
                 <div class="col-md-12 col-sm-12 col-xs-12">
                     <h3 class="title-category">REAL ESTATE MARKET</h3>    
                 </div>
@@ -288,8 +386,8 @@
                 wp_reset_query();
                 ?>
 
-    			<div class="col-md-6 col-sm-6 col-xs-12">
-    				<ul class="wrap-content-left">
+          <div class="col-md-6 col-sm-6 col-xs-12">
+            <ul class="wrap-content-left">
                        <?php
                        $flag = 0;
                        $posts_per_page = 7;
@@ -321,10 +419,10 @@
                   <?php
                   wp_reset_query();
                   ?>
-    				</ul>
-    			</div>
-    			
-    		</div>
+            </ul>
+          </div>
+          
+        </div>
         <div class="row">
             <div class="col-md-12">
               <div class="see-more">
@@ -334,10 +432,10 @@
                     </a>
               </div>
             </div>
-    	 </div>
+       </div>
     </section>
 
-    <section class="bg-white">
+    <section class="bg-silver">
         <div class="container">
             <div class="row">
                 <div class="col-md-12 col-sm-12 col-xs-12">
