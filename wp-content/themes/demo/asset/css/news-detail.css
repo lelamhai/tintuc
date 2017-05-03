@@ -109,9 +109,15 @@
   width: 100% !important;
 }
 
-.detail-title-category {
-
+.detail-title-category:hover {
+    color: #a71a27;
 }
+
+.active-title-category {
+    color: #a71a27 !important;
+}
+
+
 
 /*==============================*/
 .btn {

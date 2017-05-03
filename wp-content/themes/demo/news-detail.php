@@ -15,18 +15,18 @@
 			<div class="col-md-12 col-sm-12 col-xs-12">
 				<div class="wrap-category-path">
 					<a href="<?php echo site_url(); ?>/news">
-						<span class="glyphicon glyphicon-home"></span>
+						<span class="glyphicon glyphicon-home detail-title-category"></span>
 					</a>
-					<span class="symbol">:</span>
+					<span class="symbol">></span>
 					<?php
 					$categories = get_the_category();
 					$Category = $categories[0]->slug;
 					switch ($Category) {
 						case 'news':
 							?>
-							<a href="<?php echo site_url(); ?>/news-list/" class="detail-title-category">
+							<a href="<?php echo site_url(); ?>/news-list/" class="detail-title-category active-title-category">
 								<?php 
-								echo $categories[0]->name;
+									echo $categories[0]->name;
 								?>
 							</a>
 							<?php 
@@ -36,7 +36,7 @@
 							?>
 							<a href="<?php echo site_url(); ?>/news-list/" class="detail-title-category">News</a>
 							<span class="symbol">></span>
-							<a href="<?php echo site_url(); ?>/real-estate-market-list/" class="detail-title-category">
+							<a href="<?php echo site_url(); ?>/real-estate-market-list/" class="detail-title-category active-title-category">
 								<?php 
 								echo $categories[0]->name;
 								?>
@@ -49,7 +49,7 @@
 							?>
 							<a href="<?php echo site_url(); ?>/news-list/" class="detail-title-category">News</a>
 							<span class="symbol">></span>
-							<a href="<?php echo site_url(); ?>/policy-news-list/" class="detail-title-category">
+							<a href="<?php echo site_url(); ?>/policy-news-list/" class="detail-title-category active-title-category">
 								<?php 
 								echo $categories[0]->name;
 								?>
