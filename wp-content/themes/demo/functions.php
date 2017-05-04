@@ -1,4 +1,73 @@
 <?php
+/*======================== page admin ==================================*/
+
+/*
+** ROLE
+*/
+
+/*remove_role( 'subscriber' );
+remove_role( 'contributor' );
+remove_role( 'author' );
+remove_role( 'editor' );
+remove_role( 'author' );*/
+
+
+/**
+* Add role for capabilities
+**/
+add_role(
+    'basic_contributor',
+    __( 'Basic Contributor' ),
+    array(
+        'read'         => true,
+        'delete_posts' => true, 
+        'edit_posts'   => true,
+        'delete_published_posts' => true,
+        'publish_posts' => true,
+        'upload_files' => true,
+        'edit_published_posts' => true,
+        'delete_others_posts' => true,
+        'delete_private_posts' => true,
+    )
+);
+
+
+/**
+ * Remove role for capabilities
+ **/
+/*function remove_capabilities() {
+    $editor = get_role( 'basic_contributor' );
+    $caps = array(
+        'delete_published_posts',
+    );
+    foreach ( $caps as $cap ) {
+        $editor->remove_cap( $cap );
+    }
+}
+add_action( 'admin_init', 'remove_capabilities' );*/
+
+/**
+* Update role for capabilities
+**/
+function update_caps() {
+    $role = get_role( 'basic_contributor' );
+
+     $caps = array(
+        'delete_published_posts',
+    );
+    foreach ( $caps as $cap ) {
+        $role->add_cap( $cap );
+    }
+}
+add_action( 'admin_init', 'update_caps');
+
+
+
+
+
+
+
+/*======================== page front-end ==============================*/
 /*
 *method: new_excerpt_length
 *use: It is count length, if length long change .....

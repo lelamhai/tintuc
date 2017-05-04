@@ -104,7 +104,7 @@
 		<div class="row">
 			<div class="slider autoplay">
 				<?php
-				$posts_per_page = 80;
+				$posts_per_page = 8;
 				$args = array(
 					'category_name' => 'real-estate-market',
 					'posts_per_page' => $posts_per_page,

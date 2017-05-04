@@ -100,7 +100,7 @@
     			<div class="slider autoplay">
     				<?php
     				
-    				$posts_per_page = 80;
+    				$posts_per_page = 8;
     				$args = array(
               'category__in' => 2,
     					'posts_per_page' => $posts_per_page,
