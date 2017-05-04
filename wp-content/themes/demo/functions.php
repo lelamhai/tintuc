@@ -20,14 +20,35 @@ add_role(
     __( 'Basic Contributor' ),
     array(
         'read'         => true,
+        //subcriber
         'delete_posts' => true, 
         'edit_posts'   => true,
+        //contributor
         'delete_published_posts' => true,
         'publish_posts' => true,
         'upload_files' => true,
         'edit_published_posts' => true,
-        'delete_others_posts' => true,
+        //author
+        'unfiltered_html' => true,
+        'read_private_pages' => true,
+        'edit_private_pages' => true,
+        'delete_private_pages' => true,
+        'read_private_posts' => true,
+        'edit_private_posts' => true,
         'delete_private_posts' => true,
+        'delete_others_posts' => true,
+        'delete_published_pages' => true,
+        'delete_others_pages' => true,
+        'delete_pages' => true,
+        'publish_pages' => true,
+        'edit_published_pages' => true,
+        'edit_others_pages' => true,
+        'edit_pages' => true,
+        'edit_others_posts' => true,
+        'manage_links' => true,
+        'manage_categories' => true,
+        'moderate_comments' => true,
+        //editor
     )
 );
 
@@ -35,38 +56,97 @@ add_role(
 /**
  * Remove role for capabilities
  **/
-/*function remove_capabilities() {
+function remove_capabilities() {
     $editor = get_role( 'basic_contributor' );
     $caps = array(
         'delete_published_posts',
+        'publish_posts',
+        'unfiltered_html',
+        'read_private_posts',
+        'edit_private_posts',
+        'delete_private_posts',
+        'delete_others_posts',
+        'manage_links',
+        'manage_categories',
+        'moderate_comments',
     );
     foreach ( $caps as $cap ) {
         $editor->remove_cap( $cap );
     }
 }
-add_action( 'admin_init', 'remove_capabilities' );*/
+add_action( 'admin_init', 'remove_capabilities' );
 
 /**
 * Update role for capabilities
 **/
-function update_caps() {
+/*function update_caps() {
     $role = get_role( 'basic_contributor' );
 
      $caps = array(
-        'delete_published_posts',
+        'read'         => true,
+        'delete_posts' => true, 
+        'edit_posts'   => true,
+        'delete_published_posts' => true,
+        'publish_posts' => true,
+        'upload_files' => true,
+        'edit_published_posts' => true,
+        'unfiltered_html' => true,
+        'read_private_pages' => true,
+        'edit_private_pages' => true,
+        'delete_private_pages' => true,
+        'read_private_posts' => true,
+        'edit_private_posts' => true,
+        'delete_private_posts' => true,
+        'delete_others_posts' => true,
+        'delete_published_pages' => true,
+        'delete_others_pages' => true,
+        'delete_pages' => true,
+        'publish_pages' => true,
+        'edit_published_pages' => true,
+        'edit_others_pages' => true,
+        'edit_pages' => true,
+        'edit_others_posts' => true,
+        'manage_links' => true,
+        'manage_categories' => true,
+        'moderate_comments' => true,
+
     );
     foreach ( $caps as $cap ) {
         $role->add_cap( $cap );
     }
 }
 add_action( 'admin_init', 'update_caps');
+*/
+
+/**
+* Change logo page login
+**/
+function my_login_logo() { ?>
+    <style type="text/css">
+        body.login div#login h1 a {
+            background-image: url(<?php echo get_stylesheet_directory_uri(); ?>/asset/img/meta.png);
+            width:256px;
+            height:120px;
+            background-size: 100%;
+        }
+    </style>
+<?php }
+add_action( 'login_enqueue_scripts', 'my_login_logo' );
 
 
+function set_default_admin_color($user_id) {
+    $user_id = 1;
+    $args = array(
+        'ID' => $user_id,
+        'admin_color' => 'Midnight'
+    );
+    wp_update_user( $args );
+}
+add_action('user_register', 'set_default_admin_color');
 
 
-
-
-
+if ( !current_user_can('manage_options') )
+remove_action( 'admin_color_scheme_picker', 'admin_color_scheme_picker' );
 /*======================== page front-end ==============================*/
 /*
 *method: new_excerpt_length
