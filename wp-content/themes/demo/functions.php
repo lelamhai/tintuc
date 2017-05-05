@@ -4,50 +4,49 @@
 /*
 ** ROLE
 */
-
-/*remove_role( 'subscriber' );
+remove_role( 'subscriber' );
 remove_role( 'contributor' );
 remove_role( 'author' );
 remove_role( 'editor' );
-remove_role( 'author' );*/
+remove_role( 'author' );
 
 
 /**
 * Add role for capabilities
 **/
 add_role(
-    'basic_contributor',
-    __( 'Basic Contributor' ),
+    'basic_author',
+    __( 'Author' ),
     array(
-        'read'         => true,
+        'read'                      => true,
         //subcriber
-        'delete_posts' => true, 
-        'edit_posts'   => true,
+        'delete_posts'              => true, 
+        'edit_posts'                => true,
         //contributor
-        'delete_published_posts' => true,
-        'publish_posts' => true,
-        'upload_files' => true,
-        'edit_published_posts' => true,
+        'delete_published_posts'    => true,
+        'publish_posts'             => true,
+        'upload_files'              => true,
+        'edit_published_posts'      => true,
         //author
-        'unfiltered_html' => true,
-        'read_private_pages' => true,
-        'edit_private_pages' => true,
-        'delete_private_pages' => true,
-        'read_private_posts' => true,
-        'edit_private_posts' => true,
-        'delete_private_posts' => true,
-        'delete_others_posts' => true,
-        'delete_published_pages' => true,
-        'delete_others_pages' => true,
-        'delete_pages' => true,
-        'publish_pages' => true,
-        'edit_published_pages' => true,
-        'edit_others_pages' => true,
-        'edit_pages' => true,
-        'edit_others_posts' => true,
-        'manage_links' => true,
-        'manage_categories' => true,
-        'moderate_comments' => true,
+        'unfiltered_html'           => true,
+        'read_private_pages'        => true,
+        'edit_private_pages'        => true,
+        'delete_private_pages'      => true,
+        'read_private_posts'        => true,
+        'edit_private_posts'        => true,
+        'delete_private_posts'      => true,
+        'delete_others_posts'       => true,
+        'delete_published_pages'    => true,
+        'delete_others_pages'       => true,
+        'delete_pages'              => true,
+        'publish_pages'             => true,
+        'edit_published_pages'      => true,
+        'edit_others_pages'         => true,
+        'edit_pages'                => true,
+        'edit_others_posts'         => true,
+        'manage_links'              => true,
+        'manage_categories'         => true,
+        'moderate_comments'         => true,
         //editor
     )
 );
@@ -57,7 +56,7 @@ add_role(
  * Remove role for capabilities
  **/
 function remove_capabilities() {
-    $editor = get_role( 'basic_contributor' );
+    $editor = get_role( 'basic_author' );
     $caps = array(
         'delete_published_posts',
         'publish_posts',
@@ -80,7 +79,7 @@ add_action( 'admin_init', 'remove_capabilities' );
 * Update role for capabilities
 **/
 /*function update_caps() {
-    $role = get_role( 'basic_contributor' );
+    $role = get_role( 'basic_author' );
 
      $caps = array(
         'read'         => true,
@@ -119,7 +118,7 @@ add_action( 'admin_init', 'update_caps');
 */
 
 /**
-* Change logo page login
+* Change layout page login
 **/
 function my_login_logo() { ?>
     <style type="text/css">
@@ -128,25 +127,43 @@ function my_login_logo() { ?>
             width:256px;
             height:120px;
             background-size: 100%;
+            pointer-events: none;
+            cursor: default;
+        }
+        #nav a {
+            display: none;
         }
     </style>
 <?php }
 add_action( 'login_enqueue_scripts', 'my_login_logo' );
 
-
-function set_default_admin_color($user_id) {
-    $user_id = 1;
-    $args = array(
-        'ID' => $user_id,
-        'admin_color' => 'Midnight'
-    );
-    wp_update_user( $args );
+/**
+** Hide feature in sidebar
+**/
+function remove_menus(){    
+    $current_user = wp_get_current_user();
+    $user = new WP_User( $current_user->ID );
+    $user_role = $user->roles[0];
+    switch ($user_role) {
+        case 'basic_author':
+            remove_menu_page( 'upload.php' );                 //Media
+            remove_menu_page( 'edit-comments.php' );          //Comments
+            remove_menu_page( 'tools.php' );                  //Tools 
+            remove_action( 'admin_color_scheme_picker', 'admin_color_scheme_picker' );
+            break;
+        
+        default:
+            # code...
+            break;
+    }
 }
-add_action('user_register', 'set_default_admin_color');
+add_action( 'admin_menu', 'remove_menus' );
 
 
-if ( !current_user_can('manage_options') )
-remove_action( 'admin_color_scheme_picker', 'admin_color_scheme_picker' );
+
+
+
+
 /*======================== page front-end ==============================*/
 /*
 *method: new_excerpt_length
@@ -268,7 +285,6 @@ add_action('wp_ajax_load_posts_by_ajax', 'load_posts_by_ajax_callback');
 add_action('wp_ajax_nopriv_load_posts_by_ajax', 'load_posts_by_ajax_callback');
 function load_posts_by_ajax_callback() {
     check_ajax_referer('load_more_posts_policy', 'security');
-
     $paged = $_POST['page'];
     $category = $_POST['category'];
     

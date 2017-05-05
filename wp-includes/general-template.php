@@ -3457,6 +3457,13 @@ function register_admin_color_schemes() {
 		array( 'base' => '#f3f1f1', 'focus' => '#fff', 'current' => '#fff' )
 	);
 
+	wp_admin_css_color( 'jinn', _x( 'Jinn', 'admin color scheme' ),
+		admin_url( "css/colors/jinn/colors$suffix.css" ),
+		array( '#b43c38', '#aa1a27', '#dd823b', '#ccaf0b' ),
+		array( 'base' => '#f3f1f1', 'focus' => '#fff', 'current' => '#fff' )
+	);
+
+
 	wp_admin_css_color( 'ectoplasm', _x( 'Ectoplasm', 'admin color scheme' ),
 		admin_url( "css/colors/ectoplasm/colors$suffix.css" ),
 		array( '#413256', '#523f6d', '#a3b745', '#d46f15' ),
