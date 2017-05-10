@@ -183,3 +183,119 @@ ul,ol{
 #navbar ul li .active {
   color: #a71a27;
 }
+
+/*===========footer=============*/
+.footer-site {
+    background-color: #aa1a27;
+    padding: 40px 0;
+    color: #fff;
+    font-size: 12px;
+    position: relative;
+}
+
+.container-fluid {
+    padding-right: 15px;
+    padding-left: 15px;
+    margin-right: auto;
+    margin-left: auto;
+}
+
+.footer-site .tricky-border-1 {
+  position: absolute;
+    border-right: 2px solid #fff;
+    height: 100px;
+    left: 40%;
+    top: 50px;
+}
+
+@media (min-width: 1200px)
+{
+  .visible-lg {
+      display: block !important;
+  }
+}
+
+.footer-site .tricky-border-2 {
+    position: absolute;
+    border-right: 2px solid #fff;
+    height: 100px;
+    left: 60%;
+    top: 50px;
+}
+
+@media (min-width: 1200px)
+{
+  .visible-lg {
+    display: block !important;
+  }
+}
+
+.footer-site .contact-footer {
+    padding-top: 15px;
+}
+
+@media (max-width: 1366px) and (min-width: 1024px)
+{
+.contact-footer {
+    padding-left: 0;
+    padding-right: 100px;
+}
+}
+
+@media (min-width: 1366px)
+{.contact-footer {
+    float: right;
+    padding-left: 0;
+    padding-top: 0;
+    padding-right: 150px;
+}
+}
+@media (min-width: 992px)
+{.contact-footer {
+    float: right;
+}
+}
+
+@media (max-width: 1366px) and (min-width: 1024px)
+{.footer-site .tricky-border-1 {
+    left: 40%;
+    top: 50px;
+}
+}
+
+.footer-site .tricky-border-1 {
+    position: absolute;
+    border-right: 2px solid #fff;
+    height: 100px;
+    left: 38%;
+    top: 50px;
+}
+
+@media (min-width: 1200px)
+{.visible-lg {
+    display: block !important;
+}
+}
+
+@media (max-width: 1366px) and (min-width: 1024px)
+{
+.footer-site .tricky-border-2 {
+    left: 60%;
+    top: 50px;
+}
+}
+
+.footer-site .tricky-border-2 {
+    position: absolute;
+    border-right: 2px solid #fff;
+    height: 100px;
+    left: 61%;
+    top: 50px;
+}
+
+@media (min-width: 1200px)
+{
+.visible-lg {
+    display: block !important;
+}
+}

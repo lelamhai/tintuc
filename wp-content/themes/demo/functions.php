@@ -2,6 +2,56 @@
 /*======================== page admin ==================================*/
 
 /*
+** add feature menu
+*/
+add_action('admin_menu', 'Textbox_show');
+function Textbox_show()  
+{  
+    $current_user = wp_get_current_user();
+    $user = new WP_User( $current_user->ID );
+    $user_role = $user->roles[0];
+    if($user_role == 'basic_author')
+    {
+        $path = admin_url();
+        add_menu_page(
+            'HaiCustom',
+            'HaiCustom', 
+            'manage_options',
+            'Hai',
+            'myfunction_admin',
+            $path.'/images/icon.png'
+            );
+    }
+}
+
+
+/*
+** add css in page admin
+*/
+add_action( 'admin_enqueue_scripts', 'load_admin_styles' );
+function load_admin_styles() {
+    $path = admin_url();
+    wp_enqueue_style( 'custom_admin', $path . 'css/custom_admin.css', false, '1.0.0' );
+
+}  
+
+
+/*
+** Display front end of feature
+*/
+function myfunction_admin ()
+{
+?>
+    <div id="hai">
+        HelloWorld      
+    </div>
+
+<?php 
+    
+}
+
+
+/*
 ** ROLE
 */
 remove_role( 'subscriber' );
@@ -48,6 +98,20 @@ add_role(
         'manage_categories'         => true,
         'moderate_comments'         => true,
         //editor
+        'manage_options'            => true
+        /*'delete_site'               => true,
+        'customize'                 => true,
+        'edit_dashboard'            => true,
+        'update_themes'             => true,
+        'update_plugins'            => true,
+        'update_core'               => true,
+        'switch_themes'             => true,
+        'remove_users'              => true,
+        'promote_users'             => true,*/
+        
+        /*'list_users'               => true,
+        'install_themes'            => true,
+        'install_plugins'           => true,     */   
     )
 );
 
@@ -65,9 +129,22 @@ function remove_capabilities() {
         'edit_private_posts',
         'delete_private_posts',
         'delete_others_posts',
+        'edit_pages',
         'manage_links',
         'manage_categories',
         'moderate_comments',
+        'delete_site',
+        'customize',
+        'edit_dashboard',
+        'update_themes',
+        'update_plugins',
+        'update_core',
+        'switch_themes',
+        'remove_users',
+        'promote_users',
+        'list_users',
+        'install_themes',
+        'install_plugins'
     );
     foreach ( $caps as $cap ) {
         $editor->remove_cap( $cap );
@@ -78,11 +155,11 @@ add_action( 'admin_init', 'remove_capabilities' );
 /**
 * Update role for capabilities
 **/
-/*function update_caps() {
+function update_caps() {
     $role = get_role( 'basic_author' );
 
      $caps = array(
-        'read'         => true,
+        /*'read'         => true,
         'delete_posts' => true, 
         'edit_posts'   => true,
         'delete_published_posts' => true,
@@ -107,7 +184,7 @@ add_action( 'admin_init', 'remove_capabilities' );
         'edit_others_posts' => true,
         'manage_links' => true,
         'manage_categories' => true,
-        'moderate_comments' => true,
+        'moderate_comments' => true,*/
 
     );
     foreach ( $caps as $cap ) {
@@ -115,7 +192,7 @@ add_action( 'admin_init', 'remove_capabilities' );
     }
 }
 add_action( 'admin_init', 'update_caps');
-*/
+
 
 /**
 * Change layout page login
@@ -149,6 +226,8 @@ function remove_menus(){
             remove_menu_page( 'upload.php' );                 //Media
             remove_menu_page( 'edit-comments.php' );          //Comments
             remove_menu_page( 'tools.php' );                  //Tools 
+            remove_menu_page( 'options-general.php' );        //Settings
+            remove_menu_page( 'edit.php?post_type=acf' );        //Settings
             remove_action( 'admin_color_scheme_picker', 'admin_color_scheme_picker' );
             break;
         
@@ -160,7 +239,16 @@ function remove_menus(){
 add_action( 'admin_menu', 'remove_menus' );
 
 
-
+function remove_acf_menu() {
+    $current_user = wp_get_current_user();
+    $user = new WP_User( $current_user->ID );
+    $user_role = $user->roles[0];
+    if($user_role == 'basic_author')
+    {
+        remove_menu_page('edit.php?post_type=acf');
+    }
+}   
+add_action( 'admin_menu', 'remove_acf_menu', 999);
 
 
 

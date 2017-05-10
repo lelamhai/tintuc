@@ -1,37 +1,55 @@
 </div>
-  <footer>
-      <div class="wrap-footer">
-      <div class="container">
-        <div class="row">
-          <div class="col-md-12 col-sm-12 col-xs-12">
-            <div class="text-center">
-              <strong> Địa chỉ: </strong>
-              <b><span>  135/1/58 Nguyễn Hữu Cảnh, phường 22, quận Bình Thạnh, thành phố Hồ Chí Minh. </span> </b>
-            </div>
-            <div class="text-center footer-phone">
-              <strong>Số điện thoại:</strong>&nbsp;
-              <b><span> (08) 7160 0789</span> </b>
-            </div>
-          </div>
-          <div class="col-md-12 col-sm-12 col-xs-12">
-            <div class="wrap-follow">
-              <div class="text-center footer-wrap-follow-text">
-                FOLLOW US
-              </div>
-              <div class="text-center footer-wrap-icon">
-                <img src="<?php echo get_bloginfo("template_directory"); ?>/asset/img/ic-facebook.png">
-                <img src="<?php echo get_bloginfo("template_directory"); ?>/asset/img/ic-google.png">
-                <img src="<?php echo get_bloginfo("template_directory"); ?>/asset/img/ic-twiter.png">
-              </div>
-              <div class="text-center footer-wrap-text">
-                <b> Copyright JINN 2015 All Rights Reserved </b>
-              </div>
-            </div>
-          </div>
+  
+   <div class="footer-site">
+    <div class="container-fluid">
+
+       <div class="col-md-4 text-center col-md-offset-1 logo-footer">
+            <a href="/"><img style="display:inline-block;" src="<?php echo get_bloginfo("template_directory"); ?>/asset/img/jinn-logo-footer.png" class="jinn-logo-footer"></a>
         </div>
-      </div>
+
+         <div class="col-md-5 contact-footer">
+           <div class="col-md-12">
+                     <div class="row">
+                        <div class="col-xs-5 col-sm-2  col-md-3  col-sm-offset-2 col-md-offset-1 text-right">
+                            <strong> Địa chỉ:  </strong>
+                        </div>
+                        <div class="col-xs-7 col-sm-6 col-md-5 address-text">
+                            <span>  135/1/58 Nguyễn Hữu Cảnh, phường 22, quận Bình Thạnh, thành phố Hồ Chí Minh. </span>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class=" col-xs-5 col-sm-2 col-md-3 col-sm-offset-2 col-md-offset-1 text-right">
+                            <strong>Điện thoại:</strong>
+                        </div>
+                        <div class="col-xs-7 col-sm-6 col-md-5 phone-text">
+                            <span style="white-space: nowrap;">(08) 71 060 789</span>
+                        </div>
+                    </div>
+            </div>
+        </div>
+        <div class="col-md-2 footer-bottom social-footer">
+            <div class="text-center">
+                <div class="title-fu">folow us</div>
+                <div class="social">
+                    <a href="" class="facebook"><img src="<?php echo get_bloginfo("template_directory"); ?>/asset/img/ic-facebook.png?v=0.8.1" align="footer info icon"></a>
+                    <a href="" class="google"><img src="<?php echo get_bloginfo("template_directory"); ?>/asset/img/ic-google.png?v=0.8.1" align="footer info icon"></a>
+                    <a href="" class="twiter"><img src="<?php echo get_bloginfo("template_directory"); ?>/asset/img/ic-twiter.png?v=0.8.1" align="footer info icon"></a>
+                </div>
+                <div class="footer-product-of">
+                    <img style="display:inline-block;" src="<?php echo get_bloginfo("template_directory"); ?>/asset/img/jinn-text-footer.png?v=0.8.1" class="jinn-text-logo">
+                    <span>, một sản phẩm của Jinn Tech</span>
+                </div>
+                <hr class="footer-seperator">
+                <div class="copyright">Copyright JINN 2015 All Rights Reserved  </div>
+            </div>
+        </div>
     </div>
-  </footer>
+    <div class="tricky-border-1 visible-md visible-lg">
+
+    </div>
+    <div class="tricky-border-2 visible-md visible-lg">
+    </div>
+</div> 
    <script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
   <script>window.jQuery || document.write('<script src="js/vendor/jquery-1.11.2.min.js"><\/script>')</script>
   <script src="<?php echo get_bloginfo("template_directory"); ?>/asset/js/vendor/bootstrap.min.js"></script>
